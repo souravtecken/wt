@@ -17,7 +17,7 @@ body {
 .month {
     padding: 70px 25px;
     width: 100%;
-    background: #1abc9c;
+    background: #2196f3;
     text-align: center;
 }
 
@@ -36,11 +36,13 @@ body {
 .month .prev {
     float: left;
     padding-top: 10px;
+    cursor:pointer;
 }
 
 .month .next {
     float: right;
     padding-top: 10px;
+    cursor:pointer;
 }
 
 .weekdays {
@@ -70,12 +72,18 @@ body {
     margin-bottom: 5px;
     font-size: 12px;
     color: #777;
+    cursor:pointer;
 }
 
 .days li .active {
     padding: 5px;
-    background: #1abc9c;
-    color: white !important
+    background: #2196f3;
+    color: white !important;
+    border-radius:1em;
+}
+
+.days .inactive {    
+    color: lightgray; 
 }
 
 /* Add media queries for smaller screens */
