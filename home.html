@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div id="left-panel" class="container panel">
-
+                    <h2 align="center">Day at a glance</h2>
                 </div>
             </div>
 
@@ -137,8 +137,112 @@
                                         <li onclick="bcalendarSelect(this)"></li>
                                     </ul>
                                 </div>
-
                             </div>
+                        </div>
+
+                        <div class="reminders-container col-sm-12">
+                            <h3>Reminders</h3>
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs card-header-tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#">Active Reminders</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Past deadline</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Upcoming Reminders</a>
+                                        </li>
+                                        <button type="button" class="btn btn-success" id="add-reminder-button"
+                                            data-toggle="modal" data-target="#add-reminder-modal">Add</button>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Reminder Heading 1</h5>
+                                                <small>25/10/19 - 13:45</small>
+                                            </div>
+                                            <p class="mb-1">
+                                                Reminder Description 1
+                                            </p>
+                                            <small>Delete Reminder</small>
+                                        </a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Reminder Heading 2</h5>
+                                                <small>28/11/19 - 12:45</small>
+                                            </div>
+                                            <p class="mb-1">
+                                                Reminder Description 2
+                                            </p>
+                                            <small>Delete Reminder</small>
+                                        </a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Reminder Heading 3</h5>
+                                                <small>30/11/19 - 09:45</small>
+                                            </div>
+                                            <p class="mb-1">
+                                                Reminder Description 3
+                                            </p>
+                                            <small>Delete Reminder</small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="add-reminder-modal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Add reminder</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="add-reminder-form">
+                                                <div class="form-group">
+                                                    <label for="reminder-title">Title</label>
+                                                    <input type="text" class="form-control" id="reminder-title"
+                                                        placeholder="Title">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Date/Time</label>
+                                                    <div class="form-row">
+                                                        <div class="col-6">
+                                                            <input type="date" class="form-control" id="reminder-date"
+                                                                placeholder="Date">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <input type="time" class="form-control" id="reminder-time"
+                                                                placeholder="Date">
+                                                        </div>
+                                                    </div>
+                                                    <small id="date-help" class="form-text text-muted">A deadline or any
+                                                        date you'd like associated with your reminder</small>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Additional Information</label>
+                                                    <textarea class="form-control" id="reminder-additional-information"
+                                                        placeholder="Additional information"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Add reminder</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
