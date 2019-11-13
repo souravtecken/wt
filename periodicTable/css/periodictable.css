@@ -1,0 +1,362 @@
+*
+{
+	font-family:Calibri,Sans-Serif;
+	cursor:default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#toggle_state_indicator_whole
+{
+	top:14.8em;
+	width:24.5em;
+	background:lightgrey;
+	height:2px;
+	position:absolute;
+}
+.toggle_state_indicator_part
+{
+	margin-bottom:1em;
+	width:12.25em;
+	height:2px;
+}
+#toggle_state_indicator_one
+{
+	background-color:grey;
+}
+#orbitals
+{
+	display:none;
+}
+#whole_key_box
+{
+	display:block;
+}
+#colorBox
+{
+	border-radius: 0.4em;
+	display:none;
+	height:7em;
+	width:10.5em;
+	background:hsla(39, 0%, 55%, 0.59);
+	position:fixed;
+	margin:auto;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+}
+#toColorChange
+{
+	margin-left:0.8em;
+	font-family:Calibri,Sans-Serif;
+	color:black;
+}
+#colorInput
+{
+	margin:auto;
+	left:0;
+	right:0;
+	position:absolute;
+	border:none;
+	background:hsla(176, 3%, 84%, 0.66);
+}
+.tempUnits
+{
+	display: block;
+	width:5em;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:0.5em;
+	border-radius:3px;
+	text-align: center;
+	background:hsla(176, 3%, 84%, 0.66);
+	z-index: 2;
+	border:1px solid transparent;
+}
+#tempUnitDropdown
+{
+	background: hsla(39, 0%, 55%, 0.59);
+	border-radius: 0.4em;
+	border:1px solid grey;
+	position:absolute;
+	top:5.5em;
+	right:5em;
+	margin-right:2em;
+	width:auto;
+	display: none;
+}
+#temperatureUnitTriangle
+{
+	position:relative;
+	right:0px;
+	color: hsla(39, 0%, 55%, 0.59);
+}
+#temperatureUnitTriangle:hover
+{
+	color:grey;	
+}
+#temperatureControlNest
+{
+	border:none;
+	border-radius:5px;
+}
+#temperatureControl
+{
+	width:17em;	
+}
+#temperatureDisplay
+{
+	max-width: 4em;
+	margin:auto;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	display: inline-block;
+}
+
+#legend
+{
+	display:block;
+}
+.orbitalArrowBox
+{
+	border-radius:0.2em;
+	border:1px solid grey;
+}
+td>button 
+{
+	box-shadow: -1px 2px 1px #607D8B;
+	cursor:pointer;
+	height:4.65em;
+	width:4.65em;
+	border-radius:0.4em;
+	color:black;
+	font-family:Calibri,Sans-Serif;
+	border:1px solid transparent;
+}
+.orbitalLabel
+{
+	font-size:0.85em;
+}
+#periodictable
+{
+	margin:auto;
+	left:0;
+	top:0;
+	bottom:0;
+	right:0;
+}
+.arrow
+{
+	font-family: none;
+	font-size:0.81em;
+	visibility: hidden;
+}
+
+#info
+{
+	border-radius:0.4em;
+	border:none;
+	width:100%;
+	height:14.4745em;
+}	
+.number
+{
+	font-family:Tahoma;
+	border-radius:10px;
+	width:1.5em;
+	height:2em;
+	text-align:center;
+}
+.atomicnumberdisplay
+{
+	cursor:pointer;
+	display:block;
+	top:1em;
+	font-size:0.8em;
+	right:1em;
+}
+.atomicsymboldisplay
+{
+	cursor:pointer;
+	font-size:1.4em;
+	margin-top:1px;
+}
+.key_toggle:hover
+{
+	border:1px solid grey;
+	color:grey;
+}
+.key_toggle
+{
+	z-index: 1;
+	color:black;
+	display:none;
+	position:absolute;
+	height:2em;
+	width:2em;
+	border:none;
+	margin:auto;
+	top:9.7em;
+	border-radius:0.4em;
+	box-shadow: -3px 4px 10px #888888;
+}
+#key_toggle_right
+{
+	background:hsla(0, 240%,200%, 0.4);
+	right:33em;
+}
+#key_toggle_left
+{
+	background:hsla(0, 240%,200%, 0.6);
+}
+#cstructure
+{
+	background-position: center;
+	background-repeat: no-repeat;
+	height:75px;
+	width:75px;
+	display:block;
+	position:absolute;
+	margin-top:-3em;
+	margin-left:auto;
+	margin-right:auto;
+}
+#radioactive
+{
+	float:left;
+	margin-top:-1.7em;
+	background-repeat:no-repeat;
+	background-position: center;
+	height:24px;
+	width:24px;
+	display: block;
+}
+#atomicnumber
+{
+	display:block;
+	float:right;
+	margin-top:-1.3em;
+	font-size:1.5em;
+}
+#atomicsymbol
+{
+	margin-right:24px;
+	display:block;
+	font-size:4em;
+}
+#atomicname
+{
+	padding:3px;
+	display:block;
+	font-size:1.5em;
+}
+#atomicmass
+{
+	padding:3px;
+	display:block;
+	font-size:1.2em;
+}
+#ec
+{
+	padding:3px;
+	display:block;
+	font-size:1.1em;
+	margin-bottom:-1em;
+}
+#key
+{
+	width:1em;
+}
+.ckey
+{
+	cursor:pointer;
+	display:inline-block;
+	height:2.2em;
+	width:11em;
+	border-radius:5px;
+	text-align:auto;
+}
+.bkey
+{
+	cursor:pointer;
+	margin-left:4em;
+	display:none;
+	height:2.2em;
+	width:6em;
+	border-radius:5px;
+}	
+.inkey
+{
+	box-shadow: -1px 2px 1px #839192;
+	cursor:pointer;
+	height:2.6em;
+	width:2.2em;
+	border:1px solid transparent;
+	border-radius:5px;
+}
+.type
+{
+	cursor:pointer;
+	position:absolute;
+	font-family:Calibri;
+	margin-top:0.5em;
+	margin-left:0.5em;
+}
+
+.inset
+{
+	position:auto;
+	border-radius:1px;
+	display:block;
+	margin-top:0.05em;
+	margin-bottom:0.1em;
+	height:0.2em;
+	width:1em;
+	background-color:black;
+	margin-left:-0.31em;
+}
+#closeColorBox:hover
+{
+	border:1px solid grey;
+	color:red;
+}
+#closeColorBox
+{
+	border-radius:0.4em;
+	cursor:pointer;
+	height:20px;
+	width:20px;
+	background:none;
+	color:white;
+	font-family:Calibri;
+	position:absolute;
+	right:0;
+	top:0;
+	border:1px solid white;
+}
+#settings
+{
+	border-radius:2px;
+	width:1.4em;
+	height:1.4em;
+	border:1px solid black;
+	float:right;
+	position:fixed;
+	display:block;
+	right:1em;
+	background:white;
+}
+#oxidationStatesHeading,#oxidationStates
+{
+	text-align: center;
+	font-family: Calibri,sans-serif;
+}
+/* By: Sourav Raveendran */ 

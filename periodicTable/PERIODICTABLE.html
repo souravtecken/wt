@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+			
+	<link rel="stylesheet" type="text/css" href="./css/periodictable.css">
+		
+	<link rel="stylesheet" href="./css/menu.css">
+	
+	<link rel="stylesheet" href="./css/sliding-button.css">
+	
+	<script src="./js/jquery.js"></script>    	<!-- JQUERy -->	
+	<script src="./js/ptable.js"></script>      <!-- Main script file -->	
+	<script src="./js/menu.js"></script>	       <!-- Menu file -->
+	
+		<title>
+			PERIODIC TABLE
+		</title>
+	</head>
+<body onload="hide()" bgcolor="#CFD8DC">
+<!-- ---------------------------------------------------------------- MENU STUFF ----------------------------------------------------------->
+	<div id="menu_activator"></div>
+	<div id="menu_pullDown">&#9660;</div>
+	<nav id="menu" style="top: -147px;">
+		<ul>
+			<li><a>Table  View :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><input type="checkbox" id="buttonThree" onclick="hide()"><label for="buttonThree" id="labelforbuttonthree"><i></i> </label></div></a></li>
+			<li><a>Customize :<br></a>
+			<a>&nbsp;&nbsp;&nbsp; Buttons: &nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="buttonRadiusControl" min="0" max="50" oninput="outputUpdateButtonRadius(this.value)"></a><br>
+			<a>Colors:</a>
+		</li></ul>
+		<div id="menu_footer">&#9650;</div>
+	</nav>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------->
+<div id="colorBox"><div id="closeColorBox" onclick="colorBoxClose()">&nbsp;&nbsp;X</div><p id="toColorChange"></p><input type="color" id="colorInput" list="colors" oninput="colorChange(this.value)"></div>
+<table id="periodictable" align="center">
+<tbody><tr align="center">
+<td></td>
+<td class="number" id="gone">1</td> 
+<td class="number" id="gtwo">2</td> 
+<td class="number" id="gthree">3</td>
+<td class="number" id="gfour">4</td>
+<td class="number" id="gfive">5</td>
+<td class="number" id="gsix">6</td>
+<td class="number" id="gseven">7</td>
+<td class="number" id="geight">8</td>
+<td class="number" id="gnine">9</td>
+<td class="number" id="gten">10</td>
+<td class="number" id="geleven">11</td>
+<td class="number" id="gtwelve">12</td>
+<td class="number" id="gthirteen">13</td>
+<td class="number" id="gfourteen">14</td>
+<td class="number" id="gfifteen">15</td>
+<td class="number" id="gsixteen">16</td>
+<td class="number" id="gseventeen">17</td>
+<td class="number" id="geighteen">18</td> 
+</tr>
+<!-- PERIOD ONE -->
+<tr class="periodone">
+<td class="number" id="pone">1</td>
+<td class="groupone"><button type="button" id="hydrogen" class="sblock othernonmetals" onclick="myFunction(this.id);hydrogen()"><span class="state"></span><span class="atomicsymboldisplay">H </span><span class="atomicnumberdisplay">1</span></button></td>                       <!-- HYDROGEN-->
+<td colspan="1"></td>
+<td rowspan="3" colspan="4"><button type="button" id="info" class="justForTheSakeOfABug" disabled><span id="radioactive"></span><span id="atomicnumber"></span><span id="atomicsymbol"></span><span id="cstructure"></span><span id="atomicname"></span><span id="atomicmass"></span><span id="ec"></span></button></td>
+
+<!------------------------------------------------------------------INFORMATION BOX -------------------------------------------------------------->
+
+<td rowspan="3" colspan="6" id="key" onmouseover="keyToggleAppear()" onmouseout="keyToggleAppear()">
+	<div id="whole_key_box">
+	<button id="key_toggle_right" class="key_toggle" onclick="nextPage(this)" style="display: none;">&#9658;</button>
+	<button id="key_toggle_left" class="key_toggle" onclick="nextPage(this)" style="display: none;">&#9668;</button>
+	<div id="legend" style="display: block;">
+		<div id="othernon" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="otn" class="inkey"></button><span class="type">Other nonmetals</span></div>
+		<div id="halogens" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="hal" class="inkey"></button><span class="type">Halogens</span></div>
+		<br>
+		<div id="alkalime" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="alk" class="inkey"></button><span class="type">Alkali metals</span></div>
+		<div id="transiti" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="tra" class="inkey"></button><span class="type">Transition metals</span></div>
+		<br>
+		<div id="alkaline" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="alke" class="inkey"></button><span class="type">Alkaline earth metals</span></div>
+		<div id="posttran" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="pos" class="inkey"></button><span class="type">Post-transition metals</span></div>
+		<br>
+		<div id="noblegas" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="nob" class="inkey"></button><span class="type">Noble gases</span></div>
+		<div id="lanthani" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="lan" class="inkey"></button><span class="type">Lanthanides</span></div>
+		<br>
+		<div id="metalloi" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="met" class="inkey"></button><span class="type">Metalloids</span></div>
+		<div id="actinide" class="ckey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: inline-block;"><button type="button" id="act" class="inkey"></button><span class="type">Actinides</span></div>
+		<div id="s" class="bkey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: none;"><button type="button" id="sb" class="inkey"></button><span class="type">S Block</span></div>
+		<div id="d" class="bkey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: none;"><button type="button" id="db" class="inkey"></button><span class="type">D Block</span></div>
+		<div id="p" class="bkey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: none;"><button type="button" id="pb" class="inkey"></button><span class="type">P Block</span></div>
+		<div id="f" class="bkey" onclick="highlightLotsOfElements(this.id)" ondblclick="colorBoxAppear(this.id)" style="display: none;"><button type="button" id="fb" class="inkey"></button><span class="type">F Block</span></div>
+	</div>
+	<div id="orbitals" style="display: none;">
+		<table>
+			<tbody><tr id="orbit1"><th class="orbitalLabel">1s</th><td class="1s orbitalArrowBox suborbitalS 1orbital"><span id="upArrow" class="arrow" >;</span><span id="downArrow" class="arrow" >&#8595;</span></td></tr>
+			<tr id="orbit2">
+				<th class="orbitalLabel">2s</th>
+				<td class="2s orbitalArrowBox suborbitalS 2orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">2p</th>
+				<td class="2p orbitalArrowBox suborbitalP 2orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="2p orbitalArrowBox suborbitalP 2orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="2p orbitalArrowBox suborbitalP 2orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+			</tr>
+			<tr id="orbit3">
+				<th class="orbitalLabel">3s</th>
+				<td class="3s orbitalArrowBox suborbitalS 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">3p</th>
+				<td class="3p orbitalArrowBox suborbitalP 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="3p orbitalArrowBox suborbitalP 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="3p orbitalArrowBox suborbitalP 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">3d</th>
+				<td class="3d orbitalArrowBox suborbitalD 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="3d orbitalArrowBox suborbitalD 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="3d orbitalArrowBox suborbitalD 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="3d orbitalArrowBox suborbitalD 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="3d orbitalArrowBox suborbitalD 3orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>	
+			</tr>
+			<tr id="orbit4">
+				<th class="orbitalLabel">4s</th>
+				<td class="4s orbitalArrowBox suborbitalS 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">4p</th>
+				<td class="4p orbitalArrowBox suborbitalP 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4p orbitalArrowBox suborbitalP 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4p orbitalArrowBox suborbitalP 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">4d</th>
+				<td class="4d orbitalArrowBox suborbitalD 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4d orbitalArrowBox suborbitalD 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4d orbitalArrowBox suborbitalD 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4d orbitalArrowBox suborbitalD 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4d orbitalArrowBox suborbitalD 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>	
+				<th class="orbitalLabel">4f</th>
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>	
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="4f orbitalArrowBox suborbitalF 4orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>				
+			</tr>
+			<tr id="orbit5">
+				<th class="orbitalLabel">5s</th>
+				<td class="5s orbitalArrowBox suborbitalS 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">5p</th>
+				<td class="5p orbitalArrowBox suborbitalP 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5p orbitalArrowBox suborbitalP 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5p orbitalArrowBox suborbitalP 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">5d</th>
+				<td class="5d orbitalArrowBox suborbitalD 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5d orbitalArrowBox suborbitalD 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5d orbitalArrowBox suborbitalD 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5d orbitalArrowBox suborbitalD 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5d orbitalArrowBox suborbitalD 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>	
+				<th class="orbitalLabel">5f</th>
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>	
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="5f orbitalArrowBox suborbitalF 5orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>				
+			</tr>
+			<tr id="orbit6">
+				<th class="orbitalLabel">6s</th>
+				<td class="6s orbitalArrowBox suborbitalS 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">6p</th>
+				<td class="6p orbitalArrowBox suborbitalP 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="6p orbitalArrowBox suborbitalP 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="6p orbitalArrowBox suborbitalP 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">6d</th>
+				<td class="6d orbitalArrowBox suborbitalD 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="6d orbitalArrowBox suborbitalD 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="6d orbitalArrowBox suborbitalD 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="6d orbitalArrowBox suborbitalD 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="6d orbitalArrowBox suborbitalD 6orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>	
+				<!-- OXIDATION STATES HEADING -->
+				<td colspan="8" id="oxidationStatesHeading">Oxidation States:</td>
+			</tr>
+			<tr id="orbit7">
+				<th class="orbitalLabel">7s</th>
+				<td class="7s orbitalArrowBox suborbitalS 7orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<th class="orbitalLabel">7p</th>
+				<td class="7p orbitalArrowBox suborbitalP 7orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="7p orbitalArrowBox suborbitalP 7orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<td class="7p orbitalArrowBox suborbitalP 7orbital"><span id="upArrow" class="arrow" >&#8593;</span><span id="downArrow" class="arrow" >&#8595;</span></td>
+				<!-- OXIDATION STATES -->
+				<td id="oxidationStates" colspan="14"></td> 
+			</tr>
+		</tbody></table>
+	</div>
+	<div id="toggle_state_indicator_whole">
+		<div id="toggle_state_indicator_one" class="toggle_state_indicator_part" style="background: grey;"></div><div id="toggle_state_indicator_two" class="toggle_state_indicator_part" style="background: lightgrey;"></div>
+	</div>
+	</div>
+</td>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+
+<td colspan="5" id="temperatureControlNest" ondblclick="tempActivate()" style="background: transparent;">
+	<input type="range" id="temperatureControl" list="temperatureValues" min="0" max="6000" oninput="outputUpdateTemperature(value)">
+	<output for="temperatureControl" id="temperatureDisplay"></output><span id="temperatureUnitTriangle" onclick="openTempUnits()">&#9660;</span>
+	<div id="tempUnitDropdown"><div id="K" class="tempUnits" onclick="changeTempUnit(this.id)"></div><div id="C" class="tempUnits" onclick="changeTempUnit(this.id)"></div><div id="F" class="tempUnits" onclick="changeTempUnit(this.id)"></div></div>
+	<script>
+		var currentTempUnit="K",tempUnitsOpen=false;
+		function changeTempUnit(unit) {
+			currentTempUnit=unit;
+			var x=document.getElementsByClassName("tempUnits");
+			for (var i=0;i<x.length;i++) {
+				if (x[i].id===currentTempUnit) {
+					document.getElementById(x[i].id).style.border="1px solid hsla(206, 100%, 31%, 1)";
+				}
+				else{
+					document.getElementById(x[i].id).style.border="1px solid transparent";
+				}
+			
+			}
+			document.getElementById('temperatureDisplay').value = document.getElementById(currentTempUnit).innerHTML;
+		}
+		function openTempUnits() {
+			if (tempUnitsOpen==false) {
+				tempUnitsOpen=true;
+				document.getElementById("tempUnitDropdown").style.display="block";
+				document.getElementById("temperatureUnitTriangle").innerHTML="&#9650;";
+			}
+			else{
+				tempUnitsOpen=false;
+				document.getElementById("tempUnitDropdown").style.display="none";
+				document.getElementById("temperatureUnitTriangle").innerHTML="&#9660;";
+			}
+		}
+	</script>
+</td>
+<td class="groupeighteen"><button type="button" id="helium" class="pblock noblegases" onclick="myFunction(this.id);helium()"><span class="atomicsymboldisplay">He</span><span class="atomicnumberdisplay">2</span></button></td>                   <!--HELIUM-->
+</tr>
+<!-- PERIOD TWO -->
+<tr class="periodtwo">
+<td class="number" id="ptwo">2</td>
+<td class="groupone"><button type="button" id="lithium" class="sblock alkalimetals" onclick="myFunction(this.id);lithium()"><span class="atomicsymboldisplay">Li</span><span class="atomicnumberdisplay">3</span></button></td>                       <!--LITHIUM-->
+<td class="grouptwo"><button type="button" id="beryllium" class="sblock alkalineearthmetals" onclick="myFunction(this.id);beryllium()"><span class="atomicsymboldisplay">Be</span><span class="atomicnumberdisplay">4</span></button></td> 				       <!-- BERYLLIUM-->	 
+<td class="groupthirteen"><button type="button" id="boron" class="pblock metalloids" onclick="myFunction(this.id);boron()"><span class="atomicsymboldisplay">B</span><span class="atomicnumberdisplay">5</span></button></td>	                   <!-- BORON -->
+<td class="groupfourteen"><button type="button" id="carbon" class="pblock othernonmetals" onclick="myFunction(this.id);carbon()"><span class="atomicsymboldisplay">C</span><span class="atomicnumberdisplay">6</span></button></td>	                   <!-- CARBON-->
+<td class="groupfifteen"><button type="button" id="nitrogen" class="pblock othernonmetals" onclick="myFunction(this.id);nitrogen()"><span class="atomicsymboldisplay">N</span><span class="atomicnumberdisplay">7</span></button></td>	               <!-- NITROGEN-->
+<td class="groupsixteen"><button type="button" id="oxygen" class="pblock othernonmetals" onclick="myFunction(this.id);oxygen()"><span class="atomicsymboldisplay">O</span><span class="atomicnumberdisplay">8</span></button></td>	                   <!-- OXYGEN-->
+<td class="groupseventeen"><button type="button" id="fluorine" class="pblock halogens" onclick="myFunction(this.id);fluorine()"><span class="atomicsymboldisplay">F</span><span class="atomicnumberdisplay">9</span></button></td>	               <!-- FLUORINE-->
+<td class="groupeighteen"><button type="button" id="neon" class="pblock noblegases" onclick="myFunction(this.id);neon()"><span class="atomicsymboldisplay">Ne</span><span class="atomicnumberdisplay">10</span></button></td>	                   <!-- NEON-->
+</tr>
+<!-- PERIOD THREE -->
+<tr class="periodthree">
+<td class="number" id="pthree">3</td>
+<td class="groupone"><button type="button" id="sodium" class="sblock alkalimetals" onclick="myFunction(this.id);sodium()"><span class="atomicsymboldisplay">Na</span><span class="atomicnumberdisplay">11</span></button></td>                        <!-- SODIUM-->
+<td class="grouptwo"><button type="button" id="magnesium" class="sblock alkalineearthmetals" onclick="myFunction(this.id);magnesium()"><span class="atomicsymboldisplay">Mg</span><span class="atomicnumberdisplay">12</span></button></td>                     <!-- MAGNESIUM-->
+<td class="groupthirteen"><button type="button" id="aluminium" class="pblock posttransitionmetals" onclick="myFunction(this.id);aluminium()"><span class="atomicsymboldisplay">Al</span><span class="atomicnumberdisplay">13</span></button></td>	               <!-- ALUMINIUM-->   
+<td class="groupfourteen"><button type="button" id="silicon" class="pblock metalloids" onclick="myFunction(this.id);silicon()"><span class="atomicsymboldisplay">Si</span><span class="atomicnumberdisplay">14</span></button></td>	               <!-- SILICON-->     
+<td class="groupfifteen"><button type="button" id="phosphorus" class="pblock othernonmetals" onclick="myFunction(this.id);phosphorus()"><span class="atomicsymboldisplay">P</span><span class="atomicnumberdisplay">15</span></button></td>	               <!-- PHOSPHORUS-->
+<td class="groupsixteen"><button type="button" id="sulphur" class="pblock othernonmetals" onclick="myFunction(this.id);sulphur()"><span class="atomicsymboldisplay">S</span><span class="atomicnumberdisplay">16</span></button></td>	                   <!-- SULPHUR-->
+<td class="groupseventeen"><button type="button" id="chlorine" class="pblock halogens" onclick="myFunction(this.id);chlorine()"><span class="atomicsymboldisplay">Cl</span><span class="atomicnumberdisplay">17</span></button></td>                <!-- CHLORINE-->
+<td class="groupeighteen"><button type="button" id="argon" class="pblock noblegases" onclick="myFunction(this.id);argon()"><span class="atomicsymboldisplay">Ar</span><span class="atomicnumberdisplay">18</span></button></td>                    <!-- ARGON-->
+</tr>
+<!-- PERIOD FOUR -->
+<tr class="periodfour">
+<td class="number" id="pfour" style="background-color: transparent;">4</td>
+<td class="groupone"><button type="button" id="potassium" class="sblock alkalimetals" onclick="myFunction(this.id);potassium()"><span class="atomicsymboldisplay">K</span><span class="atomicnumberdisplay">19</span></button></td>                     <!-- POTASSIUM-->
+<td class="grouptwo"><button type="button" id="calcium" class="sblock alkalineearthmetals" onclick="myFunction(this.id);calcium()"><span class="atomicsymboldisplay">Ca</span><span class="atomicnumberdisplay">20</span></button></td>                      <!-- CALCIUM--> 
+<td class="groupthree"><button type="button" id="scandium" class="dblock transitionmetals" onclick="myFunction(this.id);scandium()"><span class="atomicsymboldisplay">Sc</span><span class="atomicnumberdisplay">21</span></button></td>                   <!--SCANDIUM-->
+<td class="groupfour"><button type="button" id="titanium" class="dblock transitionmetals" onclick="myFunction(this.id);titanium()"><span class="atomicsymboldisplay">Ti</span><span class="atomicnumberdisplay">22</span></button></td>                    <!--TITANIUM-->
+<td class="groupfive"><button type="button" id="vanadium" class="dblock transitionmetals" onclick="myFunction(this.id);vanadium()"><span class="atomicsymboldisplay">V</span><span class="atomicnumberdisplay">23</span></button></td>                     <!--VANADIUM-->
+<td class="groupsix"><button type="button" id="chromium" class="dblock transitionmetals" onclick="myFunction(this.id);chromium()"><span class="atomicsymboldisplay">Cr</span><span class="atomicnumberdisplay">24</span></button></td>                     <!--CHROMIUM-->
+<td class="groupseven"><button type="button" id="manganese" class="dblock transitionmetals" onclick="myFunction(this.id);manganese()" ><span class="atomicsymboldisplay">Mn</span><span class="atomicnumberdisplay">25</span></button></td>                  <!--MANGANESE-->
+<td class="groupeight"><button type="button" id="iron" class="dblock transitionmetals" onclick="myFunction(this.id);iron()" ><span class="atomicsymboldisplay">Fe</span><span class="atomicnumberdisplay">26</span></button></td>                       <!--IRON-->
+<td class="groupnine"><button type="button" id="cobalt" class="dblock transitionmetals" onclick="myFunction(this.id);cobalt()" ><span class="atomicsymboldisplay">Co</span><span class="atomicnumberdisplay">27</span></button></td>                      <!--COBALT-->
+<td class="groupten"><button type="button" id="nickel" class="dblock transitionmetals" onclick="myFunction(this.id);nickel()"><span class="atomicsymboldisplay">Ni</span><span class="atomicnumberdisplay">28</span></button></td>                       <!--NICKEL-->
+<td class="groupeleven"><button type="button" id="copper" class="dblock transitionmetals" onclick="myFunction(this.id);copper()"><span class="atomicsymboldisplay">Cu</span><span class="atomicnumberdisplay">29</span></button></td>                    <!--COPPER-->
+<td class="grouptwelve"><button type="button" id="zinc" class="dblock transitionmetals" onclick="myFunction(this.id);zinc()"><span class="atomicsymboldisplay">Zn</span><span class="atomicnumberdisplay">30</span></button></td>                      <!--ZINC-->
+<td class="groupthirteen"><button type="button" id="gallium" class="pblock posttransitionmetals" onclick="myFunction(this.id);gallium()"><span class="atomicsymboldisplay">Ga</span><span class="atomicnumberdisplay">31</span></button></td>	              <!-- GALLIUM-->
+<td class="groupfourteen"><button type="button" id="germanium" class="pblock metalloids" onclick="myFunction(this.id);germanium()"><span class="atomicsymboldisplay">Ge</span><span class="atomicnumberdisplay">32</span></button></td>	              <!-- GERMANIUM-->
+<td class="groupfifteen"><button type="button" id="arsenic" class="pblock metalloids" onclick="myFunction(this.id);arsenic()"><span class="atomicsymboldisplay">As</span><span class="atomicnumberdisplay">33</span></button></td>	              <!-- ARSENIC-->
+<td class="groupsixteen"><button type="button" id="selenium" class="pblock othernonmetals" onclick="myFunction(this.id);selenium()"><span class="atomicsymboldisplay">Se</span><span class="atomicnumberdisplay">34</span></button></td>	              <!-- SELENIUM-->
+<td class="groupseventeen"><button type="button" id="bromine" class="pblock halogens" onclick="myFunction(this.id);bromine()"><span class="atomicsymboldisplay">Br</span><span class="atomicnumberdisplay">35</span></button></td>	              <!-- BROMINE-->
+<td class="groupeighteen"><button type="button" id="krypton" class="pblock noblegases" onclick="myFunction(this.id);krypton()"><span class="atomicsymboldisplay">Kr</span><span class="atomicnumberdisplay">36</span></button></td>                 <!-- KRYPTON-->
+</tr>
+<!-- PERIOD FIVE -->
+<tr class="periodfive">
+<td class="number" id="pfive">5</td>
+<td class="groupone"><button type="button" id="rubidium" class="sblock alkalimetals" onclick="myFunction(this.id);rubidium()"><span class="atomicsymboldisplay">Rb</span><span class="atomicnumberdisplay">37</span></button></td>                     <!-- RUBIDIUM-->
+<td class="grouptwo"><button type="button" id="strontium" class="sblock alkalineearthmetals" onclick="myFunction(this.id);strontium()"><span class="atomicsymboldisplay">Sr</span><span class="atomicnumberdisplay">38</span></button></td>                    <!-- STRONTIUM-->
+<td class="groupthree"><button type="button" id="yttrium" class="dblock transitionmetals" onclick="myFunction(this.id);yttrium()"><span class="atomicsymboldisplay">Y</span><span class="atomicnumberdisplay">39</span></button></td>                     <!--YTTRIUM-->
+<td class="groupfour"><button type="button" id="zirconium" class="dblock transitionmetals" onclick="myFunction(this.id);zirconium()"><span class="atomicsymboldisplay">Zr</span><span class="atomicnumberdisplay">40</span></button></td>                   <!--ZIRCONIUM-->
+<td class="groupfive"><button type="button" id="niobium" class="dblock transitionmetals" onclick="myFunction(this.id);niobium()"><span class="atomicsymboldisplay">Nb</span><span class="atomicnumberdisplay">41</span></button></td>                     <!--NIOBIUM-->
+<td class="groupsix"><button type="button" id="molybdenum" class="dblock transitionmetals" onclick="myFunction(this.id);molybdenum()"><span class="atomicsymboldisplay">Mo</span><span class="atomicnumberdisplay">42</span></button></td>                   <!--MOLYBDENUM-->
+<td class="groupseven"><button type="button" id="technetium" class="dblock transitionmetals" onclick="myFunction(this.id);technetium()"><span class="atomicsymboldisplay">Tc</span><span class="atomicnumberdisplay">43</span></button></td>                 <!--TECHNETIUM-->
+<td class="groupeight"><button type="button" id="ruthenium" class="dblock transitionmetals" onclick="myFunction(this.id);ruthenium()"><span class="atomicsymboldisplay">Ru</span><span class="atomicnumberdisplay">44</span></button></td>                  <!--RUTHENIUM-->
+<td class="groupnine"><button type="button" id="rhodium" class="dblock transitionmetals" onclick="myFunction(this.id);rhodium()"><span class="atomicsymboldisplay">Rh</span><span class="atomicnumberdisplay">45</span></button></td>                     <!--RHODIUM-->
+<td class="groupten"><button type="button" id="palladium" class="dblock transitionmetals" onclick="myFunction(this.id);palladium()"><span class="atomicsymboldisplay">Pd</span><span class="atomicnumberdisplay">46</span></button></td>                    <!--PALLADIUM-->
+<td class="groupeleven"><button type="button" id="silver" class="dblock transitionmetals" onclick="myFunction(this.id);silver()"><span class="atomicsymboldisplay">Ag</span><span class="atomicnumberdisplay">47</span></button></td>                    <!--SILVER-->
+<td class="grouptwelve"><button type="button" id="cadmium" class="dblock transitionmetals" onclick="myFunction(this.id);cadmium()"><span class="atomicsymboldisplay">Cd</span><span class="atomicnumberdisplay">48</span></button></td>                   <!--CADMIUM-->
+<td class="groupthirteen"><button type="button" id="indium" class="pblock posttransitionmetals" onclick="myFunction(this.id);indium()"><span class="atomicsymboldisplay">In</span><span class="atomicnumberdisplay">49</span></button></td>	              <!-- INDIUM-->
+<td class="groupfourteen"><button type="button" id="tin" class="pblock posttransitionmetals" onclick="myFunction(this.id);tin()"><span class="atomicsymboldisplay">Sn</span><span class="atomicnumberdisplay">50</span></button></td>	                  <!-- TIN-->
+<td class="groupfifteen"><button type="button" id="antimony" class="pblock metalloids" onclick="myFunction(this.id);antimony()"><span class="atomicsymboldisplay">Sb</span><span class="atomicnumberdisplay">51</span></button></td>	              <!-- ANTIMONY-->
+<td class="groupsixteen"><button type="button" id="tellurium" class="pblock metalloids" onclick="myFunction(this.id);tellurium()"><span class="atomicsymboldisplay">Te</span><span class="atomicnumberdisplay">52</span></button></td>	              <!-- TELLURIUM-->
+<td class="groupseventeen"><button type="button" id="iodine" class="pblock halogens" onclick="myFunction(this.id);iodine()"><span class="atomicsymboldisplay">I</span><span class="atomicnumberdisplay">53</span></button></td>	              <!-- IODINE-->
+<td class="groupeighteen"><button type="button" id="xenon" class="pblock noblegases" onclick="myFunction(this.id);xenon()"><span class="atomicsymboldisplay">Xe</span><span class="atomicnumberdisplay">54</span></button></td>	                  <!-- XENON-->
+</tr>
+<!-- PERIOD SIX -->
+<tr class="periodsix">
+<td class="number" id="psix">6</td>
+<td class="groupone"><button type="button" id="caesium" class="sblock alkalimetals" onclick="myFunction(this.id);caesium()"><span class="atomicsymboldisplay">Cs</span><span class="atomicnumberdisplay">55</span></button></td>                      <!-- CAESIUM-->
+<td class="grouptwo"><button type="button" id="barium" class="sblock alkalineearthmetals" onclick="myFunction(this.id);barium()"><span class="atomicsymboldisplay">Ba</span><span class="atomicnumberdisplay">56</span></button></td>                       <!-- BARIUM-->     
+<td class="groupthree"><button type="button" id="lanthanides" class="justForTheSakeOfABug" disabled="">57-71</button></td>             <!--LANTHANIDES-->
+<td class="groupfour"><button type="button" id="hafnium" class="dblock transitionmetals" onclick="myFunction(this.id);hafnium()"><span class="atomicsymboldisplay">Hf</span><span class="atomicnumberdisplay">72</span></button></td>                     <!--HAFNIUM-->
+<td class="groupfive"><button type="button" id="tantalum" class="dblock transitionmetals" onclick="myFunction(this.id);tantalum()"><span class="atomicsymboldisplay">Ta</span><span class="atomicnumberdisplay">73</span></button></td>                    <!--TANTALUM-->
+<td class="groupsix"><button type="button" id="tungsten" class="dblock transitionmetals" onclick="myFunction(this.id);tungsten()"><span class="atomicsymboldisplay">W</span><span class="atomicnumberdisplay">74</span></button></td>                      <!--TUNGSTEN-->
+<td class="groupseven"><button type="button" id="rhenium" class="dblock transitionmetals" onclick="myFunction(this.id);rhenium()"><span class="atomicsymboldisplay">Re</span><span class="atomicnumberdisplay">75</span></button></td>                    <!--RHENIUM-->
+<td class="groupeight"><button type="button" id="osmium" class="dblock transitionmetals" onclick="myFunction(this.id);osmium()"><span class="atomicsymboldisplay">Os</span><span class="atomicnumberdisplay">76</span></button></td>                     <!--OSMIUM-->
+<td class="groupnine"><button type="button" id="iridium" class="dblock transitionmetals" onclick="myFunction(this.id);iridium()"><span class="atomicsymboldisplay">Ir</span><span class="atomicnumberdisplay">77</span></button></td>                     <!--IRIDIUM-->
+<td class="groupten"><button type="button" id="platinum" class="dblock transitionmetals" onclick="myFunction(this.id);platinum()"><span class="atomicsymboldisplay">Pt</span><span class="atomicnumberdisplay">78</span></button></td>                     <!--PLATINUM-->
+<td class="groupeleven"><button type="button" id="gold" class="dblock transitionmetals" onclick="myFunction(this.id);gold()"><span class="atomicsymboldisplay">Au</span><span class="atomicnumberdisplay">79</span></button></td>                      <!--GOLD-->
+<td class="grouptwelve"><button type="button" id="mercury" class="dblock transitionmetals" onclick="myFunction(this.id);mercury()"><span class="atomicsymboldisplay">Hg</span><span class="atomicnumberdisplay">80</span></button></td>                   <!--MERCURY-->
+<td class="groupthirteen"><button type="button" id="thallium" class="pblock posttransitionmetals" onclick="myFunction(this.id);thallium()"><span class="atomicsymboldisplay">Tl</span><span class="atomicnumberdisplay">81</span></button></td>	              <!-- THALLIUM-->
+<td class="groupfourteen"><button type="button" id="Lead" class="pblock posttransitionmetals" onclick="myFunction(this.id);lead()"><span class="atomicsymboldisplay">Pb</span><span class="atomicnumberdisplay">82</span></button></td>	                  <!-- LEAD-->
+<td class="groupfifteen"><button type="button" id="bismuth" class="pblock posttransitionmetals" onclick="myFunction(this.id);bismuth()"><span class="atomicsymboldisplay">Bi</span><span class="atomicnumberdisplay">83</span></button></td>	              <!-- BISMUTH-->
+<td class="groupsixteen"><button type="button" id="polonium" class="pblock metalloids" onclick="myFunction(this.id);polonium()"><span class="atomicsymboldisplay">Po</span><span class="atomicnumberdisplay">84</span></button></td>	              <!-- POLONIUM-->
+<td class="groupseventeen"><button type="button" id="astatine" class="pblock halogens" onclick="myFunction(this.id);astatine()"><span class="atomicsymboldisplay">At</span><span class="atomicnumberdisplay">85</span></button></td>	              <!-- ASTATINE-->
+<td class="groupeighteen"><button type="button" id="radon" class="pblock noblegases" onclick="myFunction(this.id);radon()"><span class="atomicsymboldisplay">Rn</span><span class="atomicnumberdisplay">86</span></button></td>	                  <!-- RADON-->
+</tr>
+<!-- PERIOD SEVEN -->
+<tr class="periodseven"> 
+<td class="number" id="pseven">7</td>
+<td class="groupone"><button type="button" id="francium" class="sblock alkalimetals" onclick="myFunction(this.id);francium()"><span class="atomicsymboldisplay">Fr</span><span class="atomicnumberdisplay">87</span></button></td>                     <!-- FRANCIUM-->
+<td class="grouptwo"><button type="button" id="radium" class="sblock alkalineearthmetals" onclick="myFunction(this.id);radium()"><span class="atomicsymboldisplay">Ra</span><span class="atomicnumberdisplay">88</span></button></td>                       <!-- RADIUM-->
+<td class="groupthree"><button type="button" id="actinides" class="justForTheSakeOfABug" disabled="">89-103</button></td>              <!--ACTINIDES-->
+<td class="groupfour"><button type="button" id="rutherfordium" class="dblock transitionmetals" onclick="myFunction(this.id);rutherfordium()"><span class="atomicsymboldisplay">Rf</span><span class="atomicnumberdisplay">104</span></button></td>               <!--RUTHERFORDIUM-->
+<td class="groupfive"><button type="button" id="dubnium" class="dblock transitionmetals" onclick="myFunction(this.id);dubnium()"><span class="atomicsymboldisplay">Db</span><span class="atomicnumberdisplay">105</span></button></td>                     <!--DUBNIUM-->
+<td class="groupsix"><button type="button" id="seaborgium" class="dblock transitionmetals" onclick="myFunction(this.id);seaborgium()"><span class="atomicsymboldisplay">Sg</span><span class="atomicnumberdisplay">106</span></button></td>                   <!--SEABORGIUM-->
+<td class="groupseven"><button type="button" id="bohrium" class="dblock transitionmetals" onclick="myFunction(this.id);bohrium()"><span class="atomicsymboldisplay">Bh</span><span class="atomicnumberdisplay">107</span></button></td>                    <!--BOHRIUM-->
+<td class="groupeight"><button type="button" id="hassium" class="dblock transitionmetals" onclick="myFunction(this.id);hassium()"><span class="atomicsymboldisplay">Hs</span><span class="atomicnumberdisplay">108</span></button></td>                    <!--HASSIUM-->
+<td class="groupnine"><button type="button" id="meitnerium" class="dblock transitionmetals" onclick="myFunction(this.id);meitnerium()"><span class="atomicsymboldisplay">Mt</span><span class="atomicnumberdisplay">109</span></button></td>                  <!--MEITNERIUM-->
+<td class="groupten"><button type="button" id="darmstadtium" class="dblock transitionmetals" onclick="myFunction(this.id);darmstadtium()"><span class="atomicsymboldisplay">Ds</span><span class="atomicnumberdisplay">110</span></button></td>                 <!--DARMSTADTIUM-->
+<td class="groupeleven"><button type="button" id="roentgenium" class="dblock transitionmetals" onclick="myFunction(this.id);roentgenium()"><span class="atomicsymboldisplay">Rg</span><span class="atomicnumberdisplay">111</span></button></td>               <!--ROENTGENIUM-->
+<td class="grouptwelve"><button type="button" id="Copernicium" class="dblock transitionmetals" onclick="myFunction(this.id);copernicium()"><span class="atomicsymboldisplay">Cn</span><span class="atomicnumberdisplay">112</span></button></td>               <!--COPPERNICIUM-->
+<td class="groupthirteen"><button type="button" id="ununtrium" class="pblock posttransitionmetals" onclick="myFunction(this.id);ununtrium()"><span class="atomicsymboldisplay">Nh</span><span class="atomicnumberdisplay">113</span></button></td>	          <!-- UNUNTRIUM-->
+<td class="groupfourteen"><button type="button" id="flerovium" class="pblock posttransitionmetals" onclick="myFunction(this.id);flerovium()"><span class="atomicsymboldisplay">Fl</span><span class="atomicnumberdisplay">114</span></button></td>	              <!-- FLEROVIUM-->
+<td class="groupfifteen"><button type="button" id="ununpentium" class="pblock posttransitionmetals" onclick="myFunction(this.id);ununpentium()"><span class="atomicsymboldisplay">Mc</span><span class="atomicnumberdisplay">115</span></button></td>	          <!-- UNUNPENTIUM-->
+<td class="groupsixteen"><button type="button" id="livermorium" class="pblock posttransitionmetals" onclick="myFunction(this.id);livermorium()"><span class="atomicsymboldisplay">Lv</span><span class="atomicnumberdisplay">116</span></button></td>	          <!-- LIVERMORIUM-->
+<td class="groupseventeen"><button type="button" id="ununseptium" class="pblock halogens" onclick="myFunction(this.id);ununseptium()"><span class="atomicsymboldisplay">Ts</span><span class="atomicnumberdisplay">117</span></button></td>	          <!-- UNUNSEPTIUM-->
+<td class="groupeighteen"><button type="button" id="ununoctium" class="pblock noblegases" onclick="myFunction(this.id);ununoctium()"><span class="atomicsymboldisplay">Og</span><span class="atomicnumberdisplay">118</span></button></td>	          <!-- UNUNOCTIUM-->
+</tr>
+</tbody></table>
+<br>
+<table align="center">
+<tbody><tr class="periodsix">
+<td><button id="lanthanum" class="fblock lanthanides" onclick="myFunction(this.id);lanthanum()" style="background-color: rgb(158, 157, 36);"><span class="atomicsymboldisplay">La</span><span class="atomicnumberdisplay">57</span></button></td>
+<td><button id="cerium" class="fblock lanthanides" onclick="myFunction(this.id);cerium()"><span class="atomicsymboldisplay">Ce</span><span class="atomicnumberdisplay">58</span></button></td>
+<td><button id="praseodymium" class="fblock lanthanides" onclick="myFunction(this.id);praseodymium()"><span class="atomicsymboldisplay">Pr</span><span class="atomicnumberdisplay">59</span></button></td>
+<td><button id="neodymium" class="fblock lanthanides" onclick="myFunction(this.id);neodymium()"><span class="atomicsymboldisplay">Nd</span><span class="atomicnumberdisplay">60</span></button></td>
+<td><button id="promethium" class="fblock lanthanides" onclick="myFunction(this.id);promethium()"><span class="atomicsymboldisplay">Pm</span><span class="atomicnumberdisplay">61</span></button></td>
+<td><button id="samarium" class="fblock lanthanides" onclick="myFunction(this.id);samarium()"><span class="atomicsymboldisplay">Sm</span><span class="atomicnumberdisplay">62</span></button></td>
+<td><button id="europium" class="fblock lanthanides" onclick="myFunction(this.id);europium()"><span class="atomicsymboldisplay">Eu</span><span class="atomicnumberdisplay">63</span></button></td>
+<td><button id="gadolinium" class="fblock lanthanides" onclick="myFunction(this.id);gadolinium()"><span class="atomicsymboldisplay">Gd</span><span class="atomicnumberdisplay">64</span></button></td>
+<td><button id="terbium" class="fblock lanthanides" onclick="myFunction(this.id);terbium()"><span class="atomicsymboldisplay">Tb</span><span class="atomicnumberdisplay">65</span></button></td>
+<td><button id="dysprosium" class="fblock lanthanides" onclick="myFunction(this.id);dysprosium()"><span class="atomicsymboldisplay">Dy</span><span class="atomicnumberdisplay">66</span></button></td>
+<td><button id="holmium" class="fblock lanthanides" onclick="myFunction(this.id);holmium()"><span class="atomicsymboldisplay">Ho</span><span class="atomicnumberdisplay">67</span></button></td>
+<td><button id="erbium" class="fblock lanthanides" onclick="myFunction(this.id);erbium()"><span class="atomicsymboldisplay">Er</span><span class="atomicnumberdisplay">68</span></button></td>
+<td><button id="thulium" class="fblock lanthanides" onclick="myFunction(this.id);thulium()"><span class="atomicsymboldisplay">Tm</span><span class="atomicnumberdisplay">69</span></button></td>
+<td><button id="ytterbium" class="fblock lanthanides" onclick="myFunction(this.id);ytterbium()"><span class="atomicsymboldisplay">Yb</span><span class="atomicnumberdisplay">70</span></button></td>
+<td><button id="lutetium" class="fblock lanthanides" onclick="myFunction(this.id);lutetium()"><span class="atomicsymboldisplay">Lu</span><span class="atomicnumberdisplay">71</span></button></td>
+</tr>
+<tr class="periodseven">
+<td><button id="actinium" class="fblock actinides" onclick="myFunction(this.id);actinium()"><span class="atomicsymboldisplay">Ac</span><span class="atomicnumberdisplay">89</span></button></td>
+<td><button id="thorium" class="fblock actinides" onclick="myFunction(this.id);thorium()"><span class="atomicsymboldisplay">Th</span><span class="atomicnumberdisplay">90</span></button></td>
+<td><button id="protactinium" class="fblock actinides" onclick="myFunction(this.id);protactinium()"><span class="atomicsymboldisplay">Pa</span><span class="atomicnumberdisplay">91</span></button></td>
+<td><button id="uranium" class="fblock actinides" onclick="myFunction(this.id);uranium()"><span class="atomicsymboldisplay">U</span><span class="atomicnumberdisplay">92</span></button></td>
+<td><button id="neptunium" class="fblock actinides" onclick="myFunction(this.id);neptunium()"><span class="atomicsymboldisplay">Np</span><span class="atomicnumberdisplay">93</span></button></td>
+<td><button id="plutonium" class="fblock actinides" onclick="myFunction(this.id);plutonium()"><span class="atomicsymboldisplay">Pu</span><span class="atomicnumberdisplay">94</span></button></td>
+<td><button id="americium" class="fblock actinides" onclick="myFunction(this.id);americium()"><span class="atomicsymboldisplay">Am</span><span class="atomicnumberdisplay">95</span></button></td>
+<td><button id="curium" class="fblock actinides" onclick="myFunction(this.id);curium()"><span class="atomicsymboldisplay">Cm</span><span class="atomicnumberdisplay">96</span></button></td>
+<td><button id="berkelium" class="fblock actinides" onclick="myFunction(this.id);berkelium()"><span class="atomicsymboldisplay">Bk</span><span class="atomicnumberdisplay">97</span></button></td>
+<td><button id="californium" class="fblock actinides" onclick="myFunction(this.id);californium()"><span class="atomicsymboldisplay">Cf</span><span class="atomicnumberdisplay">98</span></button></td>
+<td><button id="einsteinium" class="fblock actinides" onclick="myFunction(this.id);einsteinium()"><span class="atomicsymboldisplay">Es</span><span class="atomicnumberdisplay">99</span></button></td>
+<td><button id="fermium" class="fblock actinides" onclick="myFunction(this.id);fermium()"><span class="atomicsymboldisplay">Fm</span><span class="atomicnumberdisplay">100</span></button></td>
+<td><button id="mendelevium" class="fblock actinides" onclick="myFunction(this.id);mendelevium()"><span class="atomicsymboldisplay">Md</span><span class="atomicnumberdisplay">101</span></button></td>
+<td><button id="nobelium" class="fblock actinides" onclick="myFunction(this.id);nobelium()"><span class="atomicsymboldisplay">No</span><span class="atomicnumberdisplay">102</span></button></td>
+<td><button id="lawrencium" class="fblock actinides" onclick="myFunction(this.id);lawrencium()"><span class="atomicsymboldisplay">Lr</span><span class="atomicnumberdisplay">103</span></button></td>
+</tr>
+</tbody></table>
+<!-- By: Sourav Raveendran -->
+
+</body></html>
