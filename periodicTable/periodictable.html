@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="./css/menu.css">
 	
 	<link rel="stylesheet" href="./css/sliding-button.css">
+	<link rel="stylesheet" href="../css/navbar.css">
 	
 	<script src="./js/jquery.js"></script>    	<!-- JQUERy -->	
 	<script src="./js/ptable.js"></script>      <!-- Main script file -->	
@@ -16,10 +17,18 @@
 		</title>
 	</head>
 <body onload="hide()" bgcolor="#CFD8DC">
+	<nav class="nav-bar">
+        <ul>
+            <li class="nav-option nav-header"><a href="/wt/home.html">Saviour Machine</a></li>
+            <li class="nav-option nav-tab"><a href="./periodicTable/periodictable.html">Periodic Table</a></li>
+            <li class="nav-option nav-tab"><a>Calculator</a></li>
+            <li class="nav-option nav-tab"><a>Notes</a></li>
+            <li class="nav-option nav-tab"><a>Help</a></li>
+        </ul>
+    </nav>
 <!-- ---------------------------------------------------------------- MENU STUFF ----------------------------------------------------------->
-	<div id="menu_activator"></div>
-	<div id="menu_pullDown">&#9660;</div>
-	<nav id="menu" style="top: -147px;">
+	
+	<!-- <nav id="menu" style="top: -147px;">
 		<ul>
 			<li><a>Table  View :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><input type="checkbox" id="buttonThree" onclick="hide()"><label for="buttonThree" id="labelforbuttonthree"><i></i> </label></div></a></li>
 			<li><a>Customize :<br></a>
@@ -27,7 +36,7 @@
 			<a>Colors:</a>
 		</li></ul>
 		<div id="menu_footer">&#9650;</div>
-	</nav>
+	</nav> -->
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------->
 <div id="colorBox"><div id="closeColorBox" onclick="colorBoxClose()">&nbsp;&nbsp;X</div><p id="toColorChange"></p><input type="color" id="colorInput" list="colors" oninput="colorChange(this.value)"></div>
 <table id="periodictable" align="center">
@@ -182,9 +191,9 @@
 			</tr>
 		</tbody></table>
 	</div>
-	<div id="toggle_state_indicator_whole">
+	<!-- <div id="toggle_state_indicator_whole">
 		<div id="toggle_state_indicator_one" class="toggle_state_indicator_part" style="background: grey;"></div><div id="toggle_state_indicator_two" class="toggle_state_indicator_part" style="background: lightgrey;"></div>
-	</div>
+	</div> -->
 	</div>
 </td>
 

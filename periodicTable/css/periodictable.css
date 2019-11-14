@@ -9,6 +9,10 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+body {
+	padding:0 !important;
+	margin:0 !important;
+}
 #toggle_state_indicator_whole
 {
 	top:14.8em;

@@ -1,3 +1,13 @@
+const updateDateTime = () => {
+    const currentTime = new Date();
+    document.getElementById("date").innerHTML = currentTime.getDate();
+    document.getElementById("month").innerHTML = currentTime.getMonth();
+    document.getElementById("year").innerHTML = currentTime.getFullYear();
+    document.getElementById("hours").innerHTML = currentTime.getHours();
+    document.getElementById("minutes").innerHTML = currentTime.getMinutes();
+    console.log(currentTime);
+}
+setInterval(updateDateTime, 1000);
 $(document).ready(() => {    
     $('.timetable-toggle').click((event) => {
         const organisationTimetable = $('#organisation-timetable');

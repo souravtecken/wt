@@ -3,9 +3,9 @@
 
 <head>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="./home.css">
-    <link rel="stylesheet" type="text/css" href="./navbar.css">
-    <link rel="stylesheet" type="text/css" href="./calendar.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="./css/calendar.css">
     <link rel="stylesheet" type="text/css" href="./bootstrap-min.css">
     <script src="jquery.js"></script>
     <script src="./bootstrap-min.js"></script>
@@ -15,10 +15,10 @@
     <nav class="nav-bar">
         <ul>
             <li class="nav-option nav-header"><a>Saviour Machine</a></li>
-            <li class="nav-option nav-tab"><a>Link 2</a></li>
-            <li class="nav-option nav-tab"><a>Link 3</a></li>
-            <li class="nav-option nav-tab"><a>Link 4</a></li>
-            <li class="nav-option nav-tab"><a>Link 5</a></li>
+            <li class="nav-option nav-tab"><a href="./periodicTable/periodictable.html">Periodic Table</a></li>
+            <li class="nav-option nav-tab"><a>Calculator</a></li>
+            <li class="nav-option nav-tab"><a>Notes</a></li>
+            <li class="nav-option nav-tab"><a>Help</a></li>
         </ul>
     </nav>
 
@@ -26,7 +26,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div id="left-panel" class="container panel">
-                    <h2 align="center">Day at a glance</h2>
+                    <div class="dayAtAGlance-container">
+                        <h3 align="center">Day at a glance</h3>
+                        <div class="current-date">
+                            <span id="date"></span>/<span id="month"></span>/<span id="year"></span> - <span id="hours"></span>:<span id="minutes"></span>                            
+                        </div>
+                    </div>                    
                 </div>
             </div>
 
@@ -35,7 +40,7 @@
                     <div class="row" id="scalendar-container">
                         <div class="col-sm-4 scal-tab" id="scal-tab-left">
                             <div class="container-fluid" align="center">
-                                <div id="scal-button-left" class="scal-button" onclick="scalendarViewChange(this.id);">L
+                                <div id="scal-button-left" class="scal-button" onclick="scalendarViewChange(this.id);"><
                                 </div>
                                 <span id="scal1Day" class="scalDay"></span>
                                 <span id="scal1Date" class="scalDate"></span>&nbsp;
@@ -58,7 +63,7 @@
                                 <span id="scal3Mon" class="scalMon"></span>
                                 <span id="scal3Year" class="scalYear"></span>
                                 <div id="scal-button-right" class="scal-button" onclick="scalendarViewChange(this.id);">
-                                    R </div>
+                                 > </div>
                             </div>
                         </div>
                         <div class="col-sm-12" id="bcal-accordion-container">
@@ -251,7 +256,7 @@
             <div class="col-md-2">
                 <div id="right-panel" class="container panel">
                     <div class="timetable-container">
-                        <h3 align="center">Timetable</h1>
+                        <h3 align="center">Timetable</h3>
                             <ul id="timetable-tabs" class="nav nav-tabs justify-content-center">
                                 <li class="nav-item timetable-toggle">
                                     <a id="organisation-timetable-tab" class="nav-link active">School</a>

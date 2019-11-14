@@ -23,6 +23,7 @@
 
 .nav-option a {    
     text-decoration: none;    
+    color:black;
 }
 
 .nav-tab:hover {
