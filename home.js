@@ -100,10 +100,9 @@ function addReminder(){
     reminderObj["additionalInfo"] = document.getElementById("reminder-additional-information").value;
     let key = 1;
     if(globalReminders.length)
-        key = globalReminders[globalReminders.length-1].key;            
+        key = globalReminders[globalReminders.length-1].key+1;            
     reminderObj.key = key;
-    globalReminders.push(reminderObj);
-    console.log(globalReminders);
+    globalReminders.push(reminderObj);    
     fetch("reminders.php", {
         method: "POST",        
         body:JSON.stringify({
@@ -112,8 +111,7 @@ function addReminder(){
         })                    
     })
     .then(response => response.json())
-    .then(response => {
-        console.log(response);
+    .then(response => {        
         window.location.reload();
     });    
 }
@@ -143,15 +141,15 @@ function renderReminders(){
     const dateBeingViewed = getViewDate();
     for(const reminder of globalReminders){
         const reminderTemplate = `<a href='#' \
-        class='list-group-item list-group-item-action flex-column align-items-start'> \
+        class='list-group-item list-group-item-primary list-group-item-action flex-column align-items-start'> \
             <div class='d-flex w-100 justify-content-between'> \
                 <h5 class='mb-1'>${reminder.title}</h5> \
                 <small>${reminder.date} - ${reminder.time}</small> \
             </div> \
             <p class='mb-1'> \
                 ${reminder.additionalInfo} \
-            </p> \
-            <small>Delete Reminder</small>\
+            </p> \            
+            <small onclick="deleteReminder(${reminder.key})">Delete Reminder</small>\
         </a>`
         const reminderDate = createDateObjectFromString(reminder.date);
         if(reminderDate.getTime() < dateBeingViewed.getTime())
@@ -166,6 +164,21 @@ function renderReminders(){
     document.getElementById("upcoming-reminders-container").innerHTML = upcomingReminders;
 }
 
+function deleteReminder(key){
+    if(confirm("Are you sure you want to delete reminder?")){
+        console.log(globalReminders);
+        globalReminders = globalReminders.filter((reminder) => reminder.key != key);
+        console.log(globalReminders);
+        fetch("reminders.php", {
+            method: "POST",        
+            body:JSON.stringify({
+                "username":localStorage.getItem("user"),
+                "reminders":JSON.stringify(globalReminders)
+            })                    
+        })                
+        window.location.reload();
+    }
+}
 function getReminders(){
     const username = localStorage.getItem("user");
     fetch(`reminders.php/?user=${username}`)
