@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./calculator.js"></script>
+    <link rel="stylesheet" type="text/css" href="./calculator.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-min.css">
+    <script src="../jquery.js"></script>
+    <script src="../bootstrap-min.js"></script>
+    <title> CALCULATOR </title>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <ul>
+            <li class="nav-option nav-header"><a>Saviour Machine</a></li>
+            <li class="nav-option nav-tab"><a href="./periodicTable/periodictable.html">Periodic Table</a></li>
+            <li class="nav-option nav-tab"><a>Calculator</a></li>
+            <li class="nav-option nav-tab"><a>Notes</a></li>
+            <li class="nav-option nav-tab"><a>Help</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <table>
+                    <tr>
+                        <td colspan="5">
+                            <input type="text" id="enter" value=0 disabled>
+                        </td>
+                        <td colspan="1">
+                            <button id="symbolknow" disabled></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" onclick="seven()" id="numbers">7</button></td>
+                        <td><button type="button" onclick="eight()" id="numbers">8</button></td>
+                        <td><button type="button" onclick="nine()" id="numbers">9</button></td>
+                        <td><button type="button" onclick="add()" id="operator">+</button></td>
+                        <td><button type="button" onclick="_clear()" id="clear">&larr; </button></td>
+                        <td><button type="button" onclick="_ac()" id="clear">AC</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" onclick="four()" id="numbers">4</button></td>
+                        <td><button type="button" onclick="five()" id="numbers">5</button></td>
+                        <td><button type="button" onclick="six()" id="numbers">6</button></td>
+                        <td><button type="button" onclick="subtract()" id="operator">-</button></td>
+                        <td><button type="button" onclick="prime()" id="functions">P/C</button></td>
+                        <td><button type="button" onclick="exponent()" id="operator">x<sup>n</sup></button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" onclick="one()" id="numbers">1</button></td>
+                        <td><button type="button" onclick="two()" id="numbers">2</button></td>
+                        <td><button type="button" onclick="three()" id="numbers">3</button></td>
+                        <td><button type="button" onclick="multiply()" id="operator">&times;</button></td>
+                        <td><button type="button" onclick="percent()" id="operator">&#37;</button></td>
+                        <td><button type="button" onclick="root()" id="operator"><sup>n</sup>&radic;x</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" onclick="decimal()" id="numbers">.</button></td>
+                        <td><button type="button" onclick="zero()" id="numbers">0</button></td>
+                        <td><button type="button" onclick="equals()" id="equal">=</button></td>
+                        <td><button type="button" onclick="divide()" id="operator">&divide;</button></td>
+                        <td><button type="button" onclick="remainder()" id="functions">REM</button></td>
+                        <td><button type="button" onclick="symbolremove()" id="clear">SR</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-6">                
+
+                <div class="converter-wrapper">
+                    <h1> UNIT CONVERTER</h1>
+                    <form name="property_form">
+                        <span>
+                            <select class="select-property" name="the_menu" size=1
+                                onChange="UpdateUnitMenu(this, document.form_A.unit_menu); UpdateUnitMenu(this, document.form_B.unit_menu)">
+                            </select>
+                        </span>
+                    </form>
+
+                    <div class="converter-side-a">
+                        <form name="form_A" onSubmit="return false">
+                            <input type="text" class="numbersonly" name="unit_input" maxlength="20" value="0"
+                                onKeyUp="CalculateUnit(document.form_A, document.form_B)">
+                            <span>
+                                <select name="unit_menu" onChange="CalculateUnit(document.form_B, document.form_A)">
+                                </select>
+                            </span>
+                        </form>
+                    </div> <!-- /converter-side-a -->
+
+                    <div class="converter-equals">
+                        <p>=</p>
+                    </div> <!-- /converter-side-a -->
+
+                    <div class="converter-side-b">
+                        <form name="form_B" onSubmit="return false">
+                            <input type="text" class="numbersonly" name="unit_input" maxlength="20" value="0"
+                                onkeyup="CalculateUnit(document.form_B, document.form_A)">
+                            <span>
+                                <select name="unit_menu" onChange="CalculateUnit(document.form_A, document.form_B)">
+                                </select>
+                            </span>
+                        </form>
+                    </div> <!-- /converter-side-b -->
+                </div><!-- /converter-wrapper -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
