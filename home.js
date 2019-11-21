@@ -114,11 +114,33 @@ function addReminder(){
     .then(response => response.json())
     .then(response => {
         console.log(response);
+        window.location.reload();
     });    
 }
 
-function renderReminders(){
-    let reminders = ""
+function createDateObjectFromString(dateString){
+    const dateList = dateString.split("-");
+    const dateObj = new Date();
+    dateObj.setDate(dateList[2]);
+    dateObj.setMonth(dateList[1]-1);
+    dateObj.setFullYear(dateList[0]);
+    return dateObj;
+}
+
+function getViewDate(){
+    const mapMonthCode = {"Jan":0, "Feb":1, "Mar":2, "Apr":3, "May":4, "Jun":5, "Jul":6, "Aug":7, "Sep":8,"Oct":9, "Nov":10, "Dec":11};
+    const dateObj = new Date();
+    dateObj.setDate(document.getElementById("scal2Date").innerHTML);
+    dateObj.setFullYear(document.getElementById("scal2Year").innerHTML);
+    dateObj.setMonth(mapMonthCode[document.getElementById("scal2Mon").innerHTML]);
+    return dateObj;
+}
+
+function renderReminders(){    
+    let pastReminders = "";
+    let upcomingReminders = "";
+    let activeReminders = "";
+    const dateBeingViewed = getViewDate();
     for(const reminder of globalReminders){
         const reminderTemplate = `<a href='#' \
         class='list-group-item list-group-item-action flex-column align-items-start'> \
@@ -130,10 +152,18 @@ function renderReminders(){
                 ${reminder.additionalInfo} \
             </p> \
             <small>Delete Reminder</small>\
-        </a>`            
-        reminders+=reminderTemplate;
+        </a>`
+        const reminderDate = createDateObjectFromString(reminder.date);
+        if(reminderDate.getTime() < dateBeingViewed.getTime())
+            pastReminders += reminderTemplate;
+        else if(reminderDate.getTime() <= (dateBeingViewed.getTime() + (7*24*60*60*1000)))
+            activeReminders += reminderTemplate;
+        else 
+            upcomingReminders += reminderTemplate;        
     }
-    document.getElementById("active-reminders-container").innerHTML = reminders;
+    document.getElementById("active-reminders-container").innerHTML = activeReminders;
+    document.getElementById("past-reminders-container").innerHTML = pastReminders;
+    document.getElementById("upcoming-reminders-container").innerHTML = upcomingReminders;
 }
 
 function getReminders(){
