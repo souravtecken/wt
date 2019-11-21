@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Timetable</title>    
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="./css/timetable.css">
+    <link rel="stylesheet" type="text/css" href="./bootstrap-min.css">
+    <script src="jquery.js"></script>
+    <script src="./bootstrap-min.js"></script>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <ul>
+            <li class="nav-option nav-header"><a>Saviour Machine</a></li>
+            <li class="nav-option nav-tab"><a href="./periodicTable/periodictable.html">Periodic Table</a></li>
+            <li class="nav-option nav-tab"><a>Calculator</a></li>
+            <li class="nav-option nav-tab"><a>Notes</a></li>
+            <li class="nav-option nav-tab"><a>Help</a></li>
+        </ul>
+    </nav>    
+    <div class="timetable text-center">
+        <div id="timetable-nav" class="btn-group" role="group">
+            <button id="organisation-timetable-tab" type="button" class="btn btn-secondary active timetable-toggle">Organisation</button>
+            <button id="personal-timetable-tab" type="button" class="btn btn-secondary timetable-toggle">Personal</button>                    
+        </div>        
+        <table id="organisation-timetable">
+            <tr class="monday">
+                <th>Monday</th>
+                <!-- <td>
+                    <input class="cell-input" type="text" value="" placeholder="Title"/>
+                    <br>
+                    <input class="cell-input" type="text" value="" placeholder="Time"/>
+                </td>                 -->
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="tuesday">
+                <th>Tuesday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="wednesday">
+                <th>Wednesday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="thursday">
+                <th>Thursday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="friday">
+                <th>Friday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="saturday">
+                <th>Saturday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>            
+        </table>
+        <table id="personal-timetable">
+            <tr class="monday">
+                <th>Monday</th>   
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>             
+            </tr>
+            <tr class="tuesday">
+                <th>Tuesday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="wednesday">
+                <th>Wednesday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="thursday">
+                <th>Thursday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="friday">
+                <th>Friday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="saturday">
+                <th>Saturday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+            <tr class="sunday">
+                <th>Sunday</th>
+                <td class="add-session">
+                    <button onclick="addSession(this)" class="add">Add</span>
+                </td>
+            </tr>
+        </table>
+        <button onclick="saveTimetable();" class="save">Save</button>
+    </div>
+    <script src="./timetable.js"></script>
+</body>
+</html>

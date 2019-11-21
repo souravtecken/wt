@@ -18,6 +18,13 @@
                 signupContainer.style.display = "block"
             }
         }
+        function setUser(username){
+            alert("Yo "+ username);
+            localStorage.setItem("user", username);
+            window.location.href = "./home.html";
+        }
+        if(localStorage.getItem("user"))
+            window.location.href = "./home.html";
     </script>
     <body>
         <div class="login-signup-container">                        
@@ -43,8 +50,7 @@
                 </form>                
                 <button class="signup-login-toggle" onclick="toggleLoginSignup()" type="button">Click here to login</button>
             </div>
-        </div>        
-        <!-- <script src="./login.js"></script> -->
+        </div>                
     </body>
 </html>
 
@@ -62,7 +68,7 @@
         $password = $_POST["password"];
         $sql = "SELECT * FROM myusers WHERE username = '$username' AND password = '$password'";
         if (mysqli_num_rows(mysqli_query($conn, $sql))) {
-            echo "<script>alert('Yay, logged in')</script>";
+            echo "<script>setUser('".$username."');</script>";
         } else {
             echo "<script>alert('Incorrect credentials')</script>";
         }
