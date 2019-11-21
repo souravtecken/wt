@@ -140,8 +140,14 @@ function renderReminders(){
     let activeReminders = "";
     const dateBeingViewed = getViewDate();
     for(const reminder of globalReminders){
+        const reminderDate = createDateObjectFromString(reminder.date);
+        let colorClass = "list-group-item-info"
+        if(reminderDate.getTime() < dateBeingViewed.getTime())
+            colorClass = "list-group-item-danger";
+        else if(reminderDate.getTime() <= (dateBeingViewed.getTime() + (7*24*60*60*1000)))
+            colorClass = "list-group-item-primary";        
         const reminderTemplate = `<a href='#' \
-        class='list-group-item list-group-item-primary list-group-item-action flex-column align-items-start'> \
+        class='list-group-item ${colorClass} list-group-item-action flex-column align-items-start'> \
             <div class='d-flex w-100 justify-content-between'> \
                 <h5 class='mb-1'>${reminder.title}</h5> \
                 <small>${reminder.date} - ${reminder.time}</small> \
@@ -150,8 +156,7 @@ function renderReminders(){
                 ${reminder.additionalInfo} \
             </p> \            
             <small onclick="deleteReminder(${reminder.key})">Delete Reminder</small>\
-        </a>`
-        const reminderDate = createDateObjectFromString(reminder.date);
+        </a>`        
         if(reminderDate.getTime() < dateBeingViewed.getTime())
             pastReminders += reminderTemplate;
         else if(reminderDate.getTime() <= (dateBeingViewed.getTime() + (7*24*60*60*1000)))
