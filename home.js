@@ -1,3 +1,4 @@
+let globalReminders = [];
 const updateDateTime = () => {
     const currentTime = new Date();
     document.getElementById("date").innerHTML = currentTime.getDate();
@@ -5,7 +6,6 @@ const updateDateTime = () => {
     document.getElementById("year").innerHTML = currentTime.getFullYear();
     document.getElementById("hours").innerHTML = currentTime.getHours();
     document.getElementById("minutes").innerHTML = currentTime.getMinutes();
-    console.log(currentTime);
 }
 setInterval(updateDateTime, 1000);
 $(document).ready(() => {    
@@ -63,4 +63,56 @@ function initTimeTable(){
         })
 }
 
+function addReminder(){        
+    const reminderObj = {};
+    reminderObj["title"] = document.getElementById("reminder-title").value;    
+    reminderObj["date"] = document.getElementById("reminder-date").value;
+    reminderObj["time"] = document.getElementById("reminder-time").value;
+    reminderObj["additionalInfo"] = document.getElementById("reminder-additional-information").value;
+    let key = 1;
+    if(globalReminders.length)
+        key = globalReminders[globalReminders.length-1].key;            
+    reminderObj.key = key;
+    globalReminders.push(reminderObj);
+    console.log(globalReminders);
+    fetch("reminders.php", {
+        method: "POST",        
+        body:JSON.stringify({
+            "username":localStorage.getItem("user"),
+            "reminders":JSON.stringify(globalReminders)
+        })                    
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+    });    
+}
+
+function getReminders(){
+    const username = localStorage.getItem("user");
+    fetch(`reminders.php/?user=${username}`)
+        .then(response => {            
+            return response.json();
+        })
+        .then(response => {
+            globalReminders = JSON.parse(response);
+            let reminders = ""
+            for(const reminder of globalReminders){
+                const reminderTemplate = `<a href='#' \
+                class='list-group-item list-group-item-action flex-column align-items-start'> \
+                    <div class='d-flex w-100 justify-content-between'> \
+                        <h5 class='mb-1'>${reminder.title}</h5> \
+                        <small>${reminder.date} - ${reminder.time}</small> \
+                    </div> \
+                    <p class='mb-1'> \
+                        ${reminder.additionalInfo} \
+                    </p> \
+                    <small>Delete Reminder</small>\
+                </a>`            
+                reminders+=reminderTemplate;
+            }
+            document.getElementById("reminders-container").innerHTML = reminders;
+        })
+}
+getReminders();
 initTimeTable();

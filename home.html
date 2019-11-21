@@ -146,7 +146,7 @@
                             </div>
                         </div>
 
-                        <div class="reminders-container col-sm-12">
+                        <div class="col-sm-12">
                             <h3>Reminders</h3>
                             <div class="card">
                                 <div class="card-header">
@@ -165,8 +165,8 @@
                                     </ul>
                                 </div>
                                 <div class="card-body">
-                                    <div class="list-group">
-                                        <a href="#"
+                                    <div id="reminders-container" class="list-group">
+                                        <!-- <a href="#"
                                             class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">Reminder Heading 1</h5>
@@ -176,29 +176,7 @@
                                                 Reminder Description 1
                                             </p>
                                             <small>Delete Reminder</small>
-                                        </a>
-                                        <a href="#"
-                                            class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">Reminder Heading 2</h5>
-                                                <small>28/11/19 - 12:45</small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Reminder Description 2
-                                            </p>
-                                            <small>Delete Reminder</small>
-                                        </a>
-                                        <a href="#"
-                                            class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">Reminder Heading 3</h5>
-                                                <small>30/11/19 - 09:45</small>
-                                            </div>
-                                            <p class="mb-1">
-                                                Reminder Description 3
-                                            </p>
-                                            <small>Delete Reminder</small>
-                                        </a>
+                                        </a>                                         -->
                                     </div>
                                 </div>
                             </div>
@@ -216,18 +194,18 @@
                                                 <div class="form-group">
                                                     <label for="reminder-title">Title</label>
                                                     <input type="text" class="form-control" id="reminder-title"
-                                                        placeholder="Title">
+                                                        placeholder="Title"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date/Time</label>
                                                     <div class="form-row">
                                                         <div class="col-6">
                                                             <input type="date" class="form-control" id="reminder-date"
-                                                                placeholder="Date">
+                                                                placeholder="Date"/>
                                                         </div>
                                                         <div class="col-6">
                                                             <input type="time" class="form-control" id="reminder-time"
-                                                                placeholder="Date">
+                                                                placeholder="Date"/>
                                                         </div>
                                                     </div>
                                                     <small id="date-help" class="form-text text-muted">A deadline or any
@@ -238,7 +216,7 @@
                                                     <textarea class="form-control" id="reminder-additional-information"
                                                         placeholder="Additional information"></textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Add reminder</button>
+                                                <button onclick="addReminder();" type="button" class="btn btn-primary">Add reminder</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">

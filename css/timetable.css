@@ -37,6 +37,7 @@ body {
     color:white;
 }
 table {
+    margin-top:20px;
     max-width:100%;    
     overflow-x: scroll;
 }
