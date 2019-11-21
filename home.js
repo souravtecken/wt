@@ -25,6 +25,35 @@ $(document).ready(() => {
         }            
         event.target.classList.add('active');
     })
+
+    $('.reminder-tab').click((event) => {
+        const activeReminders = $('#active-reminders-container');
+        const pastReminders = $('#past-reminders-container');
+        const upcomingReminders = $('#upcoming-reminders-container');
+        const clickedId = event.target.id;
+        if(clickedId === 'active-reminder-tab'){
+            $('#past-reminder-tab').removeClass('active');
+            $('#upcoming-reminder-tab').removeClass('active');
+            activeReminders.show();
+            pastReminders.hide();
+            upcomingReminders.hide();
+        }
+        else if(clickedId === 'past-reminder-tab'){
+            $('#active-reminder-tab').removeClass('active');
+            $('#upcoming-reminder-tab').removeClass('active');
+            activeReminders.hide();
+            pastReminders.show();
+            upcomingReminders.hide();
+        }
+        else {
+            $('#past-reminder-tab').removeClass('active');
+            $('#active-reminder-tab').removeClass('active');
+            activeReminders.hide();
+            pastReminders.hide();
+            upcomingReminders.show();
+        }
+        event.target.classList.add('active');
+    })
     // Enable bootstrap accordions
     $('.collapse').collapse();
 })
@@ -88,6 +117,25 @@ function addReminder(){
     });    
 }
 
+function renderReminders(){
+    let reminders = ""
+    for(const reminder of globalReminders){
+        const reminderTemplate = `<a href='#' \
+        class='list-group-item list-group-item-action flex-column align-items-start'> \
+            <div class='d-flex w-100 justify-content-between'> \
+                <h5 class='mb-1'>${reminder.title}</h5> \
+                <small>${reminder.date} - ${reminder.time}</small> \
+            </div> \
+            <p class='mb-1'> \
+                ${reminder.additionalInfo} \
+            </p> \
+            <small>Delete Reminder</small>\
+        </a>`            
+        reminders+=reminderTemplate;
+    }
+    document.getElementById("active-reminders-container").innerHTML = reminders;
+}
+
 function getReminders(){
     const username = localStorage.getItem("user");
     fetch(`reminders.php/?user=${username}`)
@@ -95,23 +143,8 @@ function getReminders(){
             return response.json();
         })
         .then(response => {
-            globalReminders = JSON.parse(response);
-            let reminders = ""
-            for(const reminder of globalReminders){
-                const reminderTemplate = `<a href='#' \
-                class='list-group-item list-group-item-action flex-column align-items-start'> \
-                    <div class='d-flex w-100 justify-content-between'> \
-                        <h5 class='mb-1'>${reminder.title}</h5> \
-                        <small>${reminder.date} - ${reminder.time}</small> \
-                    </div> \
-                    <p class='mb-1'> \
-                        ${reminder.additionalInfo} \
-                    </p> \
-                    <small>Delete Reminder</small>\
-                </a>`            
-                reminders+=reminderTemplate;
-            }
-            document.getElementById("reminders-container").innerHTML = reminders;
+            globalReminders = JSON.parse(response);    
+            renderReminders();        
         })
 }
 getReminders();

@@ -152,20 +152,20 @@
                                 <div class="card-header">
                                     <ul class="nav nav-tabs card-header-tabs">
                                         <li class="nav-item">
-                                            <a class="nav-link active" href="#">Active Reminders</a>
+                                            <a id="active-reminder-tab" class="nav-link active reminder-tab" href="#">Active Reminders</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Past deadline</a>
+                                            <a id="past-reminder-tab" class="nav-link reminder-tab" href="#">Past deadline</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Upcoming Reminders</a>
+                                            <a id="upcoming-reminder-tab" class="nav-link reminder-tab" href="#">Upcoming Reminders</a>
                                         </li>
                                         <button type="button" class="btn btn-success" id="add-reminder-button"
                                             data-toggle="modal" data-target="#add-reminder-modal">Add</button>
                                     </ul>
                                 </div>
                                 <div class="card-body">
-                                    <div id="reminders-container" class="list-group">
+                                    <div id="active-reminders-container" class="list-group">
                                         <!-- <a href="#"
                                             class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="d-flex w-100 justify-content-between">
@@ -177,6 +177,12 @@
                                             </p>
                                             <small>Delete Reminder</small>
                                         </a>                                         -->
+                                    </div>
+                                    <div id="upcoming-reminders-container" class="list-group">
+                                        Upcoming!
+                                    </div>
+                                    <div id="past-reminders-container" class="list-group">
+                                        Past!
                                     </div>
                                 </div>
                             </div>

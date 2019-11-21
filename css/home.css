@@ -95,3 +95,7 @@ body {
     outline-width: 0 !important;
     padding:5px;
 }
+
+#upcoming-reminders-container, #past-reminders-container {
+    display: none;
+}
