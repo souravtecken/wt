@@ -2,8 +2,9 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
+    $dbname = 'users';
 
-    $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], 'users');
+    $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

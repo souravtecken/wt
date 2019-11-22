@@ -57,9 +57,10 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
+    $dbname = 'users';
 
     function login(){
-        $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], 'users');
+        $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -75,7 +76,7 @@
     }
 
     function signup(){
-        $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], 'users');
+        $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -92,7 +93,7 @@
             echo "<script>alert('An account with this email already exists')</script>";
             exit();
         }                
-        $sql = "INSERT INTO myusers VALUES ('$email', '$username', '$password', 'Sourav Raveendran')";
+        $sql = "INSERT INTO myusers VALUES ('$email', '$username', '$password', '{}', '[]', '[]')";
         if(mysqli_query($conn, $sql)){            
             echo "<script>alert('Succesfully signed up!')</script>";
         } else{            
