@@ -19,7 +19,6 @@
             }
         }
         function setUser(username){
-            alert("Yo "+ username);
             localStorage.setItem("user", username);
             window.location.href = "./home.html";
         }

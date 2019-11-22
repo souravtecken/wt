@@ -15,11 +15,31 @@
 <body>
     <nav class="nav-bar">
         <ul>
-            <li class="nav-option nav-header"><a>Saviour Machine</a></li>
-            <li class="nav-option nav-tab"><a href="./periodicTable/periodictable.html">Periodic Table</a></li>
-            <li class="nav-option nav-tab"><a>Calculator</a></li>
-            <li class="nav-option nav-tab"><a>Notes</a></li>
-            <li class="nav-option nav-tab"><a>Help</a></li>
+            <a href="/"><li id="username-show" class="nav-option nav-header">Saviour Machine</li></a>
+            <a href="../periodicTable/"><li class="nav-option nav-tab">Periodic Table</li></a>
+            <a href="../timetable.html"><li class="nav-option nav-tab">Timetable</li></a>
+            <a href="#"><li class="nav-option nav-tab">Calculator</li></a>
+            <a><li class="nav-option nav-tab">Notes</li></a>
+            <a><li class="nav-option nav-tab">Help</li></a>
+            <a onclick="logout();" id="logout-button" style="float:right;"><li class="nav-option nav-tab">Logout</li></a>
+            <a href="../login.php" id="login-button" style="float:right;display: none;"><li class="nav-option nav-tab">Login</li></a>
+            <script>
+                function logout(){
+                    if(confirm("Are you sure you want to logout?")){
+                        localStorage.removeItem("user");
+                        window.location.href="./login.php";
+                    }                    
+                }
+                if(!localStorage.getItem("user")){
+                    document.getElementById("logout-button").style.display = "none";
+                    document.getElementById("login-button").style.display = "block";
+                }                    
+                else {
+                    document.getElementById("logout-button").style.display = "block";
+                    document.getElementById("login-button").style.display = "none";
+                    document.getElementById("username-show").innerHTML = localStorage.getItem("user");
+                }
+            </script>            
         </ul>
     </nav>
     <div class="container">
