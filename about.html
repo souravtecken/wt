@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="./css/home.css" />
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/calendar.css" />
+    <link rel="stylesheet" type="text/css" href="./bootstrap-min.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <script src="jquery.js"></script>
+    <script src="./bootstrap-min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css"
+    />
+  </head>
+
+  <body>
+      <nav class="nav-bar">
+          <ul>
+            <a href="/"><li id="username-show" class="nav-option nav-header">Saviour Machine</li></a>
+            <a href="./periodicTable/"><li class="nav-option nav-tab">Periodic Table</li></a>
+            <a href="./timetable.html"><li class="nav-option nav-tab">Timetable</li></a>
+            <a href="./calculator/"><li class="nav-option nav-tab">Calculator</li></a>
+            <a href="#"><li class="nav-option nav-tab">About</li></a>
+            <a href="./contactus.html"><li class="nav-option nav-tab">Contact</li></a>
+            <a onclick="logout();" id="logout-button" style="float:right;"><li class="nav-option nav-tab">Logout</li></a>
+            <a href="./index.php" id="login-button" style="float:right;display: none;"><li class="nav-option nav-tab">Login</li></a>
+            <script>
+              function logout(){
+                          if(confirm("Are you sure you want to logout?")){
+                              localStorage.removeItem("user");
+                              window.location.href="../index.php";
+                          }                    
+                      }
+              if(!localStorage.getItem("user")){
+                document.getElementById("logout-button").style.display = "none";
+                document.getElementById("login-button").style.display = "block";
+                document.getElementById("username-show").innerHTML = "Saviour Machine";
+              }                    
+              else {
+                document.getElementById("logout-button").style.display = "block";
+                document.getElementById("login-button").style.display = "none";
+                document.getElementById("username-show").innerHTML = localStorage.getItem("user");
+              }
+            </script>            
+          </ul>
+        </nav>
+    <div class="about">
+      <img
+        src="./images/image.jpeg"
+        alt="student"
+        style="float:left"
+        height="500px"
+        width="450px"
+      />
+      <p class="about-text">
+        <br />
+        <br />
+        <h1>About Us</h1>
+        <br>
+        We here at Saviour Machine aim to provide a one of a kind system that
+        eases the life <br />
+        of a high school student, by providing everything he or she would ever
+        need <br />
+        to survive high school.
+        <br />
+        <br />This idea is inspired by our own high school experiences, where we
+        <br />
+        faced alot of difficulties in scheduling and tasking our already
+        jam-packed <br />
+        lives. <br />
+        <br />
+        The main aim of this platform is to consolidate resources such as <br />
+        reminders, calenders, timetables etc. while also providing a way to
+        quickly glance <br />
+        at elements and thier characteristics and a calculator.
+      </p>
+    </div>
+  </body>
+</html>

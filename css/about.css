@@ -1,0 +1,12 @@
+.about {
+  width: 95vw;
+  margin: auto;
+  text-align: center;
+  padding: 50px;
+}
+.about-text {
+  font-size: 20px;
+}
+.about img {
+  border-radius: 20px;
+}

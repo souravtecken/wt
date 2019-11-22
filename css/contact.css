@@ -1,0 +1,103 @@
+:root {
+  --blue: #123c69;
+  --white: #123c69;
+  --red: #123c69;
+}
+::placeholder {
+  color: var(--black);
+}
+:-ms-input-placeholder {
+  color: black;
+}
+::-ms-input-placeholder {
+  color: black;
+}
+.contact {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  background: var(--grey);
+  justify-content: space-around;
+  border-radius: 15px;
+  margin-top: 10px;
+  align-items: center;
+}
+.contact-info h1 {
+  font-size: 44px;
+  padding: 5px;
+}
+.contact-info #first {
+  color: var(--blue);
+}
+.contact-info #second {
+  color: var(--white);
+}
+.moto {
+  font-size: 35px;
+  color: var(--blue);
+  padding: 5px;
+}
+.phone-number {
+  color: var(--blue);
+  font-size: 18px;
+  margin-left: 20px;
+}
+.queries {
+  color: var(--white);
+  font-size: 25px;
+  padding: 5px;
+}
+.email:link,
+.email:visited {
+  color: var(--blue);
+  margin-left: 20px;
+  font-size: 18px;
+}
+.social-media {
+  height: 10vh;
+  padding: 10px;
+}
+
+@keyframes entrance {
+  0% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.social-media img {
+  height: 100%;
+  border-radius: 10px;
+  animation: entrance 3s ease;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+textarea {
+  resize: none;
+}
+input[type="submit"] {
+  padding: 8px;
+  font-size: 13px;
+  border: none;
+  background: black;
+  color: white;
+  font-weight: 500;
+}
+@keyframes drop {
+  0% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.formContact {
+  margin: 15px;
+  animation: drop 1.5s ease;
+}

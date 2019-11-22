@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="./css/home.css" />
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/calendar.css" />
+    <link rel="stylesheet" type="text/css" href="./bootstrap-min.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <script src="jquery.js"></script>
+    <script src="./bootstrap-min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css"
+    />
+  </head>
+
+  <body>
+      <nav class="nav-bar">
+          <ul>
+            <a href="/"><li id="username-show" class="nav-option nav-header">Saviour Machine</li></a>
+            <a href="./periodicTable/"><li class="nav-option nav-tab">Periodic Table</li></a>
+            <a href="./timetable.html"><li class="nav-option nav-tab">Timetable</li></a>
+            <a href="./calculator/"><li class="nav-option nav-tab">Calculator</li></a>
+            <a href="./about.html"><li class="nav-option nav-tab">About</li></a>
+            <a href="#"><li class="nav-option nav-tab">Contact</li></a>
+            <a onclick="logout();" id="logout-button" style="float:right;"><li class="nav-option nav-tab">Logout</li></a>
+            <a href="./index.php" id="login-button" style="float:right;display: none;"><li class="nav-option nav-tab">Login</li></a>
+            <script>
+              function logout(){
+                          if(confirm("Are you sure you want to logout?")){
+                              localStorage.removeItem("user");
+                              window.location.href="../index.php";
+                          }                    
+                      }
+              if(!localStorage.getItem("user")){
+                document.getElementById("logout-button").style.display = "none";
+                document.getElementById("login-button").style.display = "block";
+                document.getElementById("username-show").innerHTML = "Saviour Machine";
+              }                    
+              else {
+                document.getElementById("logout-button").style.display = "block";
+                document.getElementById("login-button").style.display = "none";
+                document.getElementById("username-show").innerHTML = localStorage.getItem("user");
+              }
+            </script>            
+          </ul>
+        </nav>
+    <main>
+      <section class="contact">
+        <div class="contact-info">
+          <h1 id="first">Please Give Us,</h1>
+          <h1 id="second">Your Valuable Feedback.</h1>
+          <p class="queries">Need Help ?</p>
+          <a class="email" href="theFoodProject@gmail.com"
+            >saviourMachine@gmail.com</a
+          >
+          <p class="queries">Call Us On ?</p>
+          <p class="phone-number">+91 97428 19529</p>
+          <br />
+          <div class="social-media">
+            <a href="https://www.facebook.com/Taher1703"
+              ><img src="./images/facebookLogo.png" alt="Facebook Link"
+            /></a>
+            <a href="https://www.instagram.com/thepotatocouple/"
+              ><img src="./images/instagramLogo.png" alt="Instagram Link"
+            /></a>
+          </div>
+        </div>
+        <div class="suggestion-form">
+          <form class="formContact" action="">
+            <input type="text" name="Name" placeholder="Name" size="35" />
+            <br />
+            <br />
+            <input
+              id="email"
+              type="email"
+              name="Email"
+              placeholder="Email"
+              size="35"
+            />
+            <br />
+            <br />
+            <input
+              type="text"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              size="35"
+            />
+            <br />
+            <br />
+            <textarea
+              name="suggestions"
+              rows="10"
+              cols="37"
+              placeholder="Suggestions"
+            ></textarea>
+            <br />
+            <br />
+            <input type="submit" name="send" value="Send" />
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
