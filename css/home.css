@@ -108,3 +108,18 @@ h3 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
+
+.scratchpad-header{
+    text-align: center;    
+    background-color: #8eb1c7;
+    padding:15px;
+}
+
+.current-date span {
+    font-size: 1.1rem;
+}
+
+#weather-icon {
+    color:white;
+    font-size:1.5rem;    
+}

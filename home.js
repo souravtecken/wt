@@ -258,8 +258,15 @@ function getTodos(){
 }
 
 function getWeather(position){
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
     const apiPath = `https://api.darksky.net/forecast/9ccf0366e5353b555b291281b8b33cce/${position.coords.latitude},${position.coords.longitude}`
-    console.log(apiPath);
+    fetch(proxyUrl+apiPath)
+        .then(response => response.json())
+        .then(response => {
+            document.getElementById("weather-icon").classList.add("wi-forecast-io-"+response.currently.icon);
+            document.getElementById("temperature").innerHTML = response.currently.temperature;
+            document.getElementById("weather").innerHTML = response.currently.summary;
+        })
 }
 
 function getLocation(){
