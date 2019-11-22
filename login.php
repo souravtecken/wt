@@ -60,7 +60,7 @@
     $dbname = 'users';
 
     function login(){
-        $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
+        $conn = mysqli_connect($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -76,7 +76,7 @@
     }
 
     function signup(){
-        $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
+        $conn = mysqli_connect($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
