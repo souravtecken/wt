@@ -29,9 +29,9 @@
         <div class="login-signup-container">                        
             <div class="login-container">
                 <h2 align="center">Sign In</h2>
-                <form method="post" action="login.php" class="login-form">
-                    <input type="text" name="username" placeholder="Username"/>
-                    <input type="password" name="password" placeholder="Password"/>
+                <form method="post" action="index.php" class="login-form">
+                    <input type="text" name="username" placeholder="Username" required/>
+                    <input type="password" name="password" placeholder="Password" required/>
                     <input type="text" name="isLoginOrSignup" value="login" hidden/>
                     <button type="submit" class="submit-button">SIGN IN</button>
                 </form>
@@ -39,11 +39,11 @@
             </div>            
             <div class="signup-container">
                 <h2 align="center">Sign Up</h2>
-                <form method="post" action="login.php" class="signup-form" id="signup-form">
-                    <input type="email" name="email" placeholder="Email"/>
-                    <input type="text" name="username" placeholder="Username"/>
-                    <input type="password" name="password" placeholder="Password"/>
-                    <input type="password" name="repeatPassword" placeholder="Repeat Password"/>
+                <form method="post" action="index.php" class="signup-form" id="signup-form">
+                    <input type="email" name="email" placeholder="Email" required/>
+                    <input type="text" name="username" placeholder="Username" required/>
+                    <input type="password" name="password" placeholder="Password"required/>
+                    <input type="password" name="repeatPassword" placeholder="Repeat Password" required/>
                     <input type="text" name="isLoginOrSignup" value="signup" hidden/>
                     <button type="submit" class="submit-button">SIGN UP</button>                    
                 </form>                
@@ -57,7 +57,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = 'users';
+    $dbname = "users";
 
     function login(){
         $conn = mysqli_connect($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
@@ -82,17 +82,22 @@
         }
         $username = $_POST["username"];
         $email = $_POST["email"];
-        $password = $_POST["password"];        
-        $sql = "SELECT * from myusers WHERE username = '$username'";
-        if (mysqli_num_rows(mysqli_query($conn, $sql))) {            
+        $password = $_POST["password"];
+        $repeatPassword = $_POST["repeatPassword"];        
+        if($repeatPassword != $password){
             echo "<script>alert('Username already taken')</script>";
-            exit();                      
-        }                
+            exit();
+        }
         $sql = "SELECT * from myusers WHERE emailid = '$email'";
         if (mysqli_num_rows(mysqli_query($conn, $sql))) {            
             echo "<script>alert('An account with this email already exists')</script>";
             exit();
-        }                
+        }
+        $sql = "SELECT * from myusers WHERE username = '$username'";
+        if (mysqli_num_rows(mysqli_query($conn, $sql))) {            
+            echo "<script>alert('Username already taken')</script>";
+            exit();                      
+        }                                        
         $sql = "INSERT INTO myusers VALUES ('$email', '$username', '$password', '{}', '[]', '[]')";
         if(mysqli_query($conn, $sql)){            
             echo "<script>alert('Succesfully signed up!')</script>";

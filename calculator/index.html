@@ -22,12 +22,12 @@
             <a><li class="nav-option nav-tab">Notes</li></a>
             <a><li class="nav-option nav-tab">Help</li></a>
             <a onclick="logout();" id="logout-button" style="float:right;"><li class="nav-option nav-tab">Logout</li></a>
-            <a href="../login.php" id="login-button" style="float:right;display: none;"><li class="nav-option nav-tab">Login</li></a>
+            <a href="../index.php" id="login-button" style="float:right;display: none;"><li class="nav-option nav-tab">Login</li></a>
             <script>
                 function logout(){
                     if(confirm("Are you sure you want to logout?")){
                         localStorage.removeItem("user");
-                        window.location.href="../login.php";
+                        window.location.href="../index.php";
                     }                    
                 }
                 if(!localStorage.getItem("user")){
