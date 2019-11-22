@@ -19,6 +19,9 @@ body {
     padding-top:10px;
 }
 
+.timetable-toggle {
+    cursor:pointer;
+}
 #timetable-tabs {
     width:100% !important;
 }
@@ -32,7 +35,7 @@ body {
 }
 
 .scal-tab {
-    background-color: yellow;
+    background-color: #FBFCEB;
     padding-right: 0;
     padding-left: 0;
     height: 4.5em;
@@ -45,12 +48,9 @@ body {
 }
 
 #scal-tab-center {
-    background-color: rgba(0, 128, 128, 0.3);
+    background-color: #DFE9AC;
 }
 
-#scal-tab-left {
-    background-color: rgba(242, 137, 38, 0.78);
-}
 
 .scal-button:hover{
     color: white;
@@ -85,8 +85,12 @@ body {
     padding:0px;
 }
 
+#add-reminder-button {
+    margin-left: 5vw;
+    margin-bottom: 10px;
+}
 #bcalendar-reveal-container {
-    background-color:grey;
+    background-color:#DADDDD;
 }
 
 #bcalendar-reveal-container button {
@@ -98,4 +102,9 @@ body {
 
 #upcoming-reminders-container, #past-reminders-container {
     display: none;
+}
+
+h3 {    
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }

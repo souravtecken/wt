@@ -1,4 +1,5 @@
 let globalReminders = [];
+let globalTodos = [];
 const updateDateTime = () => {
     const currentTime = new Date();
     document.getElementById("date").innerHTML = currentTime.getDate();
@@ -116,6 +117,28 @@ function addReminder(){
     });    
 }
 
+function addTodo(){
+    const todoObj = {};
+    todoObj["title"] = document.getElementById("todo-input").value;
+    let key = 1;
+    if(globalTodos.length)
+        key = globalTodos[globalTodos.length-1].key+1;            
+    todoObj.key = key;
+    globalTodos.push(todoObj);    
+    fetch("todos.php", {
+        method: "POST",        
+        body:JSON.stringify({
+            "username":localStorage.getItem("user"),
+            "todos":JSON.stringify(globalTodos)
+        })                    
+    })
+    .then(response => response.json())
+    .then(response => {        
+        console.log(response);
+        window.location.reload();
+    });
+}
+
 function createDateObjectFromString(dateString){
     const dateList = dateString.split("-");
     const dateObj = new Date();
@@ -169,6 +192,32 @@ function renderReminders(){
     document.getElementById("upcoming-reminders-container").innerHTML = upcomingReminders;
 }
 
+function renderTodos(){
+    const todoContainer = document.getElementById("todo-container");
+    let todoString = "";
+    for (const todo of globalTodos){
+        const todoTemplate = `<li class="list-group-item d-flex justify-content-between align-items-center"> \
+                                    ${todo.title}
+                                <span onclick="deleteTodo(${todo.key})" class="badge badge-danger badge-pill">Del</span> \
+                            </li> `
+        todoString += todoTemplate;
+    }
+    todoContainer.innerHTML = todoString;
+}
+function deleteTodo(key){
+    if(confirm("Are you sure you want to delete todo?")){        
+        globalTodos = globalTodos.filter((todo) => todo.key != key);        
+        fetch("todos.php", {
+            method: "POST",        
+            body:JSON.stringify({
+                "username":localStorage.getItem("user"),
+                "todos":JSON.stringify(globalTodos)
+            })                    
+        })                
+        window.location.reload();
+    }
+}
+
 function deleteReminder(key){
     if(confirm("Are you sure you want to delete reminder?")){
         console.log(globalReminders);
@@ -195,5 +244,33 @@ function getReminders(){
             renderReminders();        
         })
 }
+
+function getTodos(){
+    const username = localStorage.getItem("user");
+    fetch(`todos.php/?user=${username}`)
+        .then(response => {            
+            return response.json();
+        })
+        .then(response => {
+            globalTodos = JSON.parse(response);    
+            renderTodos();
+        })
+}
+
+function getWeather(position){
+    const apiPath = `https://api.darksky.net/forecast/9ccf0366e5353b555b291281b8b33cce/${position.coords.latitude},${position.coords.longitude}`
+    console.log(apiPath);
+}
+
+function getLocation(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getWeather);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+getLocation();
+getTodos();
 getReminders();
 initTimeTable();

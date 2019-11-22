@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="./bootstrap-min.css">
     <script src="jquery.js"></script>
     <script src="./bootstrap-min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css">
 </head>
 
 <body>
@@ -28,11 +30,38 @@
             <div class="col-md-3">
                 <div id="left-panel" class="container panel">
                     <div class="dayAtAGlance-container">
-                        <h3 align="center">Day at a glance</h3>
-                        <div class="current-date">
-                            <span id="date"></span>/<span id="month"></span>/<span id="year"></span> - <span id="hours"></span>:<span id="minutes"></span>                            
+                        <h3 align="center">Scratchpad</h3>
+                        <div class="row">
+                            <div style="border:1px solid black;" class="col-sm-6">
+                                <div class="current-date">
+                                    <span id="date"></span>/<span id="month"></span>/<span id="year"></span> - <span
+                                        id="hours"></span>:<span id="minutes"></span>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black;" class="col-sm-6">
+                                <i class="wi wi-forecast-io-fog"></i>
+                            </div>
                         </div>
-                    </div>                    
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="todo-input" placeholder="Enter Todo" />
+                                <div class="input-group-append">
+                                    <button onclick="addTodo()" class="btn btn-outline-secondary" type="button" id="add-todo">Add Todo</button>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 100%;">
+                                <div class="card-header">
+                                    Todos
+                                </div>
+                                <ul id="todo-container" class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Cras justo odio
+                                        <span class="badge badge-danger badge-pill">Del</span>
+                                    </li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -41,132 +70,134 @@
                     <div class="row" id="scalendar-container">
                         <div class="col-sm-4 scal-tab" id="scal-tab-left">
                             <div class="container-fluid" align="center">
-                                <div id="scal-button-left" class="scal-button" onclick="scalendarViewChange(this.id);"><
+                                <div id="scal-button-left" class="scal-button" onclick="scalendarViewChange(this.id);">
+                                    < </div> <span id="scal1Day" class="scalDay"></span>
+                                        <span id="scal1Date" class="scalDate"></span>&nbsp;
+                                        <span id="scal1Mon" class="scalMon"></span>
+                                        <span id="scal1Year" class="scalYear"></span>
                                 </div>
-                                <span id="scal1Day" class="scalDay"></span>
-                                <span id="scal1Date" class="scalDate"></span>&nbsp;
-                                <span id="scal1Mon" class="scalMon"></span>
-                                <span id="scal1Year" class="scalYear"></span>
                             </div>
-                        </div>
-                        <div class="col-sm-4 scal-tab" id="scal-tab-center">
-                            <div class="container-fluid" align="center" style="padding:0.8em;">
-                                <span id="scal2Day" class="scalDay"></span>
-                                <span id="scal2Date" class="scalDate"></span>&nbsp;
-                                <span id="scal2Mon" class="scalMon"></span>
-                                <span id="scal2Year" class="scalYear"></span>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 scal-tab" id="scal-tab-right">
-                            <div class="container-fluid" align="center">
-                                <span id="scal3Day" class="scalDay"></span>
-                                <span id="scal3Date" class="scalDate"></span>&nbsp;
-                                <span id="scal3Mon" class="scalMon"></span>
-                                <span id="scal3Year" class="scalYear"></span>
-                                <div id="scal-button-right" class="scal-button" onclick="scalendarViewChange(this.id);">
-                                 > </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12" id="bcal-accordion-container">
-                            <div class="accordion" id="bcal-accordion">
-                                <div id="bcalendar-reveal-container" align="center">
-                                    <button type="button" data-toggle="collapse" data-target="#bcal-container"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                        Calendar
-                                    </button>
+                            <div class="col-sm-4 scal-tab" id="scal-tab-center">
+                                <div class="container-fluid" align="center" style="padding:0.8em;">
+                                    <span id="scal2Day" class="scalDay"></span>
+                                    <span id="scal2Date" class="scalDate"></span>&nbsp;
+                                    <span id="scal2Mon" class="scalMon"></span>
+                                    <span id="scal2Year" class="scalYear"></span>
                                 </div>
-                                <div class="collapse show" id="bcal-container" data-parent="#bcal-accordion">
-                                    <div class="month">
-                                        <ul>
-                                            <li class="prev" onclick="bcalenderMonthChange(this);">&#10094;</li>
-                                            <li class="next" onclick="bcalenderMonthChange(this);">&#10095;</li>
-                                            <li>
-                                                <span id="bcal-mon"></span><br><span style="font-size:18px"
-                                                    id="bcal-year"></span>
-                                                <br>
-                                                <span id="jumpToToday" class="glyphicon glyphicon-time"
-                                                    onclick="jumpToToday();">Today</span>
-                                            </li>
+                            </div>
+                            <div class="col-sm-4 scal-tab" id="scal-tab-right">
+                                <div class="container-fluid" align="center">
+                                    <span id="scal3Day" class="scalDay"></span>
+                                    <span id="scal3Date" class="scalDate"></span>&nbsp;
+                                    <span id="scal3Mon" class="scalMon"></span>
+                                    <span id="scal3Year" class="scalYear"></span>
+                                    <div id="scal-button-right" class="scal-button"
+                                        onclick="scalendarViewChange(this.id);">
+                                        > </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12" id="bcal-accordion-container">
+                                <div class="accordion" id="bcal-accordion">
+                                    <div id="bcalendar-reveal-container" align="center">
+                                        <button type="button" data-toggle="collapse" data-target="#bcal-container"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            Calendar
+                                        </button>
+                                    </div>
+                                    <div class="collapse show" id="bcal-container" data-parent="#bcal-accordion">
+                                        <div class="month">
+                                            <ul>
+                                                <li class="prev" onclick="bcalenderMonthChange(this);">&#10094;</li>
+                                                <li class="next" onclick="bcalenderMonthChange(this);">&#10095;</li>
+                                                <li>
+                                                    <span id="bcal-mon"></span><br><span style="font-size:18px"
+                                                        id="bcal-year"></span>
+                                                    <br>
+                                                    <span id="jumpToToday" class="glyphicon glyphicon-time"
+                                                        onclick="jumpToToday();">Today</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="weekdays">
+                                            <li>Mo</li>
+                                            <li>Tu</li>
+                                            <li>We</li>
+                                            <li>Th</li>
+                                            <li>Fr</li>
+                                            <li>Sa</li>
+                                            <li>Su</li>
+                                        </ul>
+                                        <ul class="days">
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
+                                            <li onclick="bcalendarSelect(this)"></li>
                                         </ul>
                                     </div>
-                                    <ul class="weekdays">
-                                        <li>Mo</li>
-                                        <li>Tu</li>
-                                        <li>We</li>
-                                        <li>Th</li>
-                                        <li>Fr</li>
-                                        <li>Sa</li>
-                                        <li>Su</li>
-                                    </ul>
-                                    <ul class="days">
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                        <li onclick="bcalendarSelect(this)"></li>
-                                    </ul>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-12">
-                            <h3>Reminders</h3>
-                            <div class="card">
-                                <div class="card-header">
-                                    <ul class="nav nav-tabs card-header-tabs">
-                                        <li class="nav-item">
-                                            <a id="active-reminder-tab" class="nav-link active reminder-tab" href="#">Active Reminders</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a id="past-reminder-tab" class="nav-link reminder-tab" href="#">Past deadline</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a id="upcoming-reminder-tab" class="nav-link reminder-tab" href="#">Upcoming Reminders</a>
-                                        </li>
-                                        <button type="button" class="btn btn-success" id="add-reminder-button"
-                                            data-toggle="modal" data-target="#add-reminder-modal">Add</button>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div id="active-reminders-container" class="list-group">
-                                        <!-- <a href="#"
+                            <div style="margin-top:20px;" class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs card-header-tabs">
+                                            <li class="nav-item">
+                                                <a id="active-reminder-tab" class="nav-link active reminder-tab"
+                                                    href="#">Active Reminders</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a id="past-reminder-tab" class="nav-link reminder-tab" href="#">Past
+                                                    deadline</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a id="upcoming-reminder-tab" class="nav-link reminder-tab"
+                                                    href="#">Upcoming Reminders</a>
+                                            </li>
+                                            <button type="button" class="btn btn-success" id="add-reminder-button"
+                                                data-toggle="modal" data-target="#add-reminder-modal">Add</button>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="active-reminders-container" class="list-group">
+                                            <!-- <a href="#"
                                             class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1">Reminder Heading 1</h5>
@@ -177,71 +208,75 @@
                                             </p>
                                             <small>Delete Reminder</small>
                                         </a>                                         -->
-                                    </div>
-                                    <div id="upcoming-reminders-container" class="list-group">
-                                        Upcoming!
-                                    </div>
-                                    <div id="past-reminders-container" class="list-group">
-                                        Past!
+                                        </div>
+                                        <div id="upcoming-reminders-container" class="list-group">
+                                            Upcoming!
+                                        </div>
+                                        <div id="past-reminders-container" class="list-group">
+                                            Past!
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal fade" id="add-reminder-modal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">Add reminder</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span>&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="add-reminder-form">
-                                                <div class="form-group">
-                                                    <label for="reminder-title">Title</label>
-                                                    <input type="text" class="form-control" id="reminder-title"
-                                                        placeholder="Title"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Date/Time</label>
-                                                    <div class="form-row">
-                                                        <div class="col-6">
-                                                            <input type="date" class="form-control" id="reminder-date"
-                                                                placeholder="Date"/>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <input type="time" class="form-control" id="reminder-time"
-                                                                placeholder="Date"/>
-                                                        </div>
+                                <div class="modal fade" id="add-reminder-modal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">Add reminder</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span>&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="add-reminder-form">
+                                                    <div class="form-group">
+                                                        <label for="reminder-title">Title</label>
+                                                        <input type="text" class="form-control" id="reminder-title"
+                                                            placeholder="Title" />
                                                     </div>
-                                                    <small id="date-help" class="form-text text-muted">A deadline or any
-                                                        date you'd like associated with your reminder</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Additional Information</label>
-                                                    <textarea class="form-control" id="reminder-additional-information"
-                                                        placeholder="Additional information"></textarea>
-                                                </div>
-                                                <button onclick="addReminder();" type="button" class="btn btn-primary">Add reminder</button>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
+                                                    <div class="form-group">
+                                                        <label>Date/Time</label>
+                                                        <div class="form-row">
+                                                            <div class="col-6">
+                                                                <input type="date" class="form-control"
+                                                                    id="reminder-date" placeholder="Date" />
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <input type="time" class="form-control"
+                                                                    id="reminder-time" placeholder="Date" />
+                                                            </div>
+                                                        </div>
+                                                        <small id="date-help" class="form-text text-muted">A deadline or
+                                                            any
+                                                            date you'd like associated with your reminder</small>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Additional Information</label>
+                                                        <textarea class="form-control"
+                                                            id="reminder-additional-information"
+                                                            placeholder="Additional information"></textarea>
+                                                    </div>
+                                                    <button onclick="addReminder();" type="button"
+                                                        class="btn btn-primary">Add reminder</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-2">
-                <div id="right-panel" class="container panel">
-                    <div class="timetable-container">
-                        <h3 align="center">Timetable</h3>
+                <div class="col-md-2">
+                    <div id="right-panel" class="container panel">
+                        <div class="timetable-container">
+                            <h3 align="center">Timetable</h3>
                             <ul id="timetable-tabs" class="nav nav-tabs justify-content-center">
                                 <li class="nav-item timetable-toggle">
                                     <a id="organisation-timetable-tab" class="nav-link active">School</a>
@@ -254,24 +289,24 @@
                                 <!-- <tr>
                                     <td>12:30</td>
                                     <td>Engineering math</td>
-                                </tr> -->                                
+                                </tr> -->
                             </table>
 
                             <table class="table" id="personal-timetable">
                                 <!-- <tr>
                                     <td>12:30</td>
                                     <td>Water plants</td>
-                                </tr> -->                                
+                                </tr> -->
                             </table>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <script src="./calendar.js"></script>
-    <script src="./home.js"></script>
+        <script src="./calendar.js"></script>
+        <script src="./home.js"></script>
 </body>
 
 </html>
