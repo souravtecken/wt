@@ -264,8 +264,8 @@ function getWeather(position){
         .then(response => response.json())
         .then(response => {
             document.getElementById("weather-icon").classList.add("wi-forecast-io-"+response.currently.icon);
-            document.getElementById("temperature").innerHTML = response.currently.temperature;
-            document.getElementById("weather").innerHTML = response.currently.summary;
+            document.getElementById("temperature").innerHTML = response.currently.temperature*(5/9) - 32 + " &#8451;";
+            document.getElementById("weather").innerHTML = response.currently.summary; 
         })
 }
 
